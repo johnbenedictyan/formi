@@ -25,7 +25,7 @@ SECRET_KEY = "django-insecure-=axaektlrl2n#1b2!+js!1!$*#zqy8=a&552n8q)6x$0nr_=1a
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['formi.fly.dev']
+ALLOWED_HOSTS = ["formi.fly.dev", "127.0.0.1"]
 
 
 # Application definition
@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "forms",
 ]
 
 MIDDLEWARE = [
@@ -54,7 +55,7 @@ ROOT_URLCONF = "formi.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": ["formi/templates"],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [

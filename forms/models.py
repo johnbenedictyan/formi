@@ -1,5 +1,12 @@
+from django.conf import settings
+from django.db import models
+from django.utils.translation import gettext_lazy as _
+
+
 class Formi(models.Model):
-    owner = models.ForeignKey("app.Model", verbose_name=_(""), on_delete=models.CASCADE)
+    owner = models.ForeignKey(
+        settings.AUTH_USER_MODEL, verbose_name=_(""), on_delete=models.CASCADE
+    )
     title = models.CharField(_("title"), max_length=50)
     created_at = models.DateTimeField(
         _("created at"), blank=False, auto_now=False, auto_now_add=True
@@ -55,11 +62,9 @@ class FormiFieldModifier(models.Model):
 
 
 class FormiResponse(models.Model):
-    formi = models.ForeignKey(
-        "app.Model", verbose_name=_("formi"), on_delete=models.CASCADE
-    )
+    formi = models.ForeignKey(Formi, verbose_name=_("formi"), on_delete=models.CASCADE)
     user = models.ForeignKey(
-        "app.Model", verbose_name=_("user"), on_delete=models.CASCADE
+        settings.AUTH_USER_MODEL, verbose_name=_("user"), on_delete=models.CASCADE
     )
     created_at = models.DateTimeField(
         _("created at"), auto_now=False, auto_now_add=True
