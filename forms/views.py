@@ -16,7 +16,7 @@ class FormiListView(ListView):
 class FormiCreateView(CreateView):
     form_class = FormiForm
     model = Formi
-    template_name = "form_create.html"
+    template_name = "form_create_start.html"
 
 
 @method_decorator(csrf_exempt, name="dispatch")
