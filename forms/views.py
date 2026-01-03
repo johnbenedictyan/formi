@@ -1,7 +1,8 @@
 from django.http import HttpResponse
+from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
-from django.views.generic import CreateView, ListView, TemplateView
+from django.views.generic import CreateView, ListView, RedirectView, TemplateView
 
 from .forms import FormiForm
 from .models import Formi
@@ -27,5 +28,11 @@ class FormiFieldComponentView(TemplateView):
         return HttpResponse("", status=200)
 
 
-class FormiCreatePresetView(CreateView):
-    model = Formi
+class FormiCreatePresetView(RedirectView):
+    url = reverse_lazy("formi_list")
+
+    def get(self, request, *args, **kwargs):
+        preset = self.kwargs['preset']
+        print(preset)
+
+        return super().get(request, *args, **kwargs)
