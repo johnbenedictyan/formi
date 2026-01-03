@@ -25,3 +25,7 @@ class FormiFieldComponentView(TemplateView):
 
     def delete(self, request, *args, **kwargs):
         return HttpResponse("", status=200)
+
+
+class FormiCreatePresetView(CreateView):
+    model = Formi
