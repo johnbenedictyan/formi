@@ -4,32 +4,32 @@ from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import CreateView, ListView, RedirectView, TemplateView
 
-from .forms import FormiForm
-from .models import Formi
+from .forms import FormForm
+from .models import Form
 
 
 # Create your views here.
-class FormiListView(ListView):
-    model = Formi
+class FormListView(ListView):
+    model = Form
     template_name = "form_list.html"
 
 
-class FormiCreateView(CreateView):
-    form_class = FormiForm
-    model = Formi
+class FormCreateView(CreateView):
+    form_class = FormForm
+    model = Form
     template_name = "form_create_start.html"
 
 
 @method_decorator(csrf_exempt, name="dispatch")
-class FormiFieldComponentView(TemplateView):
+class FormFieldComponentView(TemplateView):
     template_name = "form_field_component.html"
 
     def delete(self, request, *args, **kwargs):
         return HttpResponse("", status=200)
 
 
-class FormiCreatePresetView(RedirectView):
-    url = reverse_lazy("formi_list")
+class FormCreatePresetView(RedirectView):
+    url = reverse_lazy("Form_list")
 
     def get(self, request, *args, **kwargs):
         preset = self.kwargs['preset']

@@ -1,23 +1,23 @@
 from django.urls import path
 
 from .views import (
-    FormiCreatePresetView,
-    FormiCreateView,
-    FormiFieldComponentView,
-    FormiListView,
+    FormCreatePresetView,
+    FormCreateView,
+    FormFieldComponentView,
+    FormListView,
 )
 
 urlpatterns = [
-    path("", FormiListView.as_view(), name="formi_list"),
+    path("", FormListView.as_view(), name="form_list"),
     path(
         "create/presets/<slug:preset>",
-        FormiCreatePresetView.as_view(),
-        name="formi_create_preset",
+        FormCreatePresetView.as_view(),
+        name="form_create_preset",
     ),
-    path("create", FormiCreateView.as_view(), name="formi_create"),
+    path("create", FormCreateView.as_view(), name="form_create"),
     path(
         "components/field",
-        FormiFieldComponentView.as_view(),
-        name="formi_field_component",
+        FormFieldComponentView.as_view(),
+        name="form_field_component",
     ),
 ]

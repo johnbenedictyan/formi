@@ -1,0 +1,816 @@
+[
+    {
+        "model": "forms.fieldpreset",
+        "pk": 1,
+        "fields": {
+            "name": "Full Name",
+            "description": "A single field for the user's full name",
+            "field_type": 1,
+            "default_label": "Full Name",
+            "default_help_text": "Please enter your first and last name",
+            "default_validations": {
+                "required": true,
+                "min_length": 2,
+                "max_length": 100,
+                "regex": "^[A-Za-z ]+$"
+            }
+        }
+    },
+    {
+        "model": "forms.fieldpreset",
+        "pk": 2,
+        "fields": {
+            "name": "First Name",
+            "description": "User's given name",
+            "field_type": 1,
+            "default_label": "First Name",
+            "default_help_text": "Enter your first name",
+            "default_validations": {
+                "required": true,
+                "min_length": 1,
+                "max_length": 50,
+                "regex": "^[A-Za-z]+$"
+            }
+        }
+    },
+    {
+        "model": "forms.fieldpreset",
+        "pk": 3,
+        "fields": {
+            "name": "Last Name",
+            "description": "User's family name",
+            "field_type": 1,
+            "default_label": "Last Name",
+            "default_help_text": "Enter your last name",
+            "default_validations": {
+                "required": true,
+                "min_length": 1,
+                "max_length": 50,
+                "regex": "^[A-Za-z]+$"
+            }
+        }
+    },
+    {
+        "model": "forms.fieldpreset",
+        "pk": 4,
+        "fields": {
+            "name": "Preferred Name",
+            "description": "Optional preferred name",
+            "field_type": 1,
+            "default_label": "Preferred Name",
+            "default_help_text": "Enter a preferred name",
+            "default_validations": {
+                "required": false,
+                "max_length": 50
+            }
+        }
+    },
+    {
+        "model": "forms.fieldpreset",
+        "pk": 5,
+        "fields": {
+            "name": "Username / Handle",
+            "description": "User's unique identifier",
+            "field_type": 1,
+            "default_label": "Username",
+            "default_help_text": "Enter your desired username",
+            "default_validations": {
+                "required": true,
+                "min_length": 3,
+                "max_length": 30,
+                "regex": "^[A-Za-z0-9_]+$"
+            }
+        }
+    },
+    {
+        "model": "forms.fieldpreset",
+        "pk": 6,
+        "fields": {
+            "name": "Email Address",
+            "description": "User's primary email",
+            "field_type": 3,
+            "default_label": "Email",
+            "default_help_text": "We'll use this email to contact you",
+            "default_validations": {
+                "required": true,
+                "regex": "^[^@]+@[^@]+\\.[^@]+$"
+            }
+        }
+    },
+    {
+        "model": "forms.fieldpreset",
+        "pk": 7,
+        "fields": {
+            "name": "Alternate Email",
+            "description": "Optional secondary email",
+            "field_type": 3,
+            "default_label": "Alternate Email",
+            "default_help_text": "Enter an alternate email if available",
+            "default_validations": {
+                "required": false,
+                "regex": "^[^@]+@[^@]+\\.[^@]+$"
+            }
+        }
+    },
+    {
+        "model": "forms.fieldpreset",
+        "pk": 8,
+        "fields": {
+            "name": "Phone Number",
+            "description": "User's primary phone number",
+            "field_type": 1,
+            "default_label": "Phone Number",
+            "default_help_text": "Include country code if applicable",
+            "default_validations": {
+                "required": false,
+                "regex": "^[0-9+\\-() ]+$",
+                "min_length": 7,
+                "max_length": 20
+            }
+        }
+    },
+    {
+        "model": "forms.fieldpreset",
+        "pk": 9,
+        "fields": {
+            "name": "Mobile Number",
+            "description": "User's mobile number",
+            "field_type": 1,
+            "default_label": "Mobile Number",
+            "default_help_text": "Include country code",
+            "default_validations": {
+                "required": false,
+                "regex": "^[0-9+\\-() ]+$",
+                "min_length": 7,
+                "max_length": 20
+            }
+        }
+    },
+    {
+        "model": "forms.fieldpreset",
+        "pk": 10,
+        "fields": {
+            "name": "Date of Birth",
+            "description": "User's date of birth",
+            "field_type": 12,
+            "default_label": "Date of Birth",
+            "default_help_text": "Select your birth date",
+            "default_validations": {
+                "required": true,
+                "min": "1900-01-01",
+                "max": "today"
+            }
+        }
+    },
+    {
+        "model": "forms.fieldpreset",
+        "pk": 11,
+        "fields": {
+            "name": "Address",
+            "description": "Street address, city, postal code",
+            "field_type": 2,
+            "default_label": "Address",
+            "default_help_text": "Enter your complete address",
+            "default_validations": {
+                "required": true,
+                "max_length": 500
+            }
+        }
+    },
+    {
+        "model": "forms.fieldpreset",
+        "pk": 12,
+        "fields": {
+            "name": "Country",
+            "description": "User's country",
+            "field_type": 1,
+            "default_label": "Country",
+            "default_help_text": "Select your country",
+            "default_validations": {
+                "required": true,
+                "choices": [
+                    "USA",
+                    "Canada",
+                    "UK",
+                    "Singapore",
+                    "Other"
+                ]
+            }
+        }
+    },
+    {
+        "model": "forms.fieldpreset",
+        "pk": 13,
+        "fields": {
+            "name": "Time Zone",
+            "description": "User's time zone",
+            "field_type": 1,
+            "default_label": "Time Zone",
+            "default_help_text": "Select your time zone",
+            "default_validations": {
+                "required": true
+            }
+        }
+    },
+    {
+        "model": "forms.fieldpreset",
+        "pk": 14,
+        "fields": {
+            "name": "Company / Organization Name",
+            "description": "Employer or organization",
+            "field_type": 1,
+            "default_label": "Company / Organization",
+            "default_help_text": "Enter your organization",
+            "default_validations": {
+                "required": false,
+                "max_length": 100
+            }
+        }
+    },
+    {
+        "model": "forms.fieldpreset",
+        "pk": 15,
+        "fields": {
+            "name": "Department / Team",
+            "description": "Team or department within organization",
+            "field_type": 1,
+            "default_label": "Department / Team",
+            "default_help_text": "Enter your department or team",
+            "default_validations": {
+                "required": false,
+                "max_length": 100
+            }
+        }
+    },
+    {
+        "model": "forms.fieldpreset",
+        "pk": 16,
+        "fields": {
+            "name": "Job Title / Role",
+            "description": "Position or title",
+            "field_type": 1,
+            "default_label": "Job Title / Role",
+            "default_help_text": "Enter your position or role",
+            "default_validations": {
+                "required": false,
+                "max_length": 100
+            }
+        }
+    },
+    {
+        "model": "forms.fieldpreset",
+        "pk": 17,
+        "fields": {
+            "name": "Employee ID",
+            "description": "Organization-assigned ID",
+            "field_type": 1,
+            "default_label": "Employee ID",
+            "default_help_text": "Enter your employee ID",
+            "default_validations": {
+                "required": false,
+                "regex": "^[A-Za-z0-9]+$",
+                "max_length": 20
+            }
+        }
+    },
+    {
+        "model": "forms.fieldpreset",
+        "pk": 18,
+        "fields": {
+            "name": "Date",
+            "description": "Generic date field",
+            "field_type": 12,
+            "default_label": "Date",
+            "default_help_text": "Select a date",
+            "default_validations": {
+                "required": false
+            }
+        }
+    },
+    {
+        "model": "forms.fieldpreset",
+        "pk": 19,
+        "fields": {
+            "name": "Time",
+            "description": "Generic time field",
+            "field_type": 13,
+            "default_label": "Time",
+            "default_help_text": "Select a time",
+            "default_validations": {
+                "required": false
+            }
+        }
+    },
+    {
+        "model": "forms.fieldpreset",
+        "pk": 20,
+        "fields": {
+            "name": "Date & Time",
+            "description": "Combined date and time",
+            "field_type": 14,
+            "default_label": "Date & Time",
+            "default_help_text": "Select date and time",
+            "default_validations": {
+                "required": false
+            }
+        }
+    },
+    {
+        "model": "forms.fieldpreset",
+        "pk": 21,
+        "fields": {
+            "name": "Integer Number",
+            "description": "Whole number input",
+            "field_type": 6,
+            "default_label": "Integer",
+            "default_help_text": "Enter an integer value",
+            "default_validations": {
+                "required": false,
+                "min": 0,
+                "max": 1000000
+            }
+        }
+    },
+    {
+        "model": "forms.fieldpreset",
+        "pk": 22,
+        "fields": {
+            "name": "Decimal Number",
+            "description": "Decimal or fractional number",
+            "field_type": 10,
+            "default_label": "Decimal Number",
+            "default_help_text": "Enter a decimal value",
+            "default_validations": {
+                "required": false,
+                "min": 0,
+                "max": 1000000
+            }
+        }
+    },
+    {
+        "model": "forms.fieldpreset",
+        "pk": 23,
+        "fields": {
+            "name": "Currency Amount",
+            "description": "Financial value",
+            "field_type": 10,
+            "default_label": "Amount",
+            "default_help_text": "Enter the monetary amount",
+            "default_validations": {
+                "required": false,
+                "min": 0,
+                "max": 100000000
+            }
+        }
+    },
+    {
+        "model": "forms.fieldpreset",
+        "pk": 24,
+        "fields": {
+            "name": "Percentage",
+            "description": "Percentage value",
+            "field_type": 10,
+            "default_label": "Percentage",
+            "default_help_text": "Enter a percentage between 0-100",
+            "default_validations": {
+                "required": false,
+                "min": 0,
+                "max": 100
+            }
+        }
+    },
+    {
+        "model": "forms.fieldpreset",
+        "pk": 25,
+        "fields": {
+            "name": "Quantity",
+            "description": "Generic quantity",
+            "field_type": 6,
+            "default_label": "Quantity",
+            "default_help_text": "Enter quantity",
+            "default_validations": {
+                "required": false,
+                "min": 0,
+                "max": 1000000
+            }
+        }
+    },
+    {
+        "model": "forms.fieldpreset",
+        "pk": 26,
+        "fields": {
+            "name": "Yes / No",
+            "description": "Boolean choice",
+            "field_type": 11,
+            "default_label": "Yes / No",
+            "default_help_text": "Select yes or no",
+            "default_validations": {
+                "required": true
+            }
+        }
+    },
+    {
+        "model": "forms.fieldpreset",
+        "pk": 27,
+        "fields": {
+            "name": "Single Select (Dropdown / Radio)",
+            "description": "Choose one option",
+            "field_type": 1,
+            "default_label": "Select an Option",
+            "default_help_text": "Choose one",
+            "default_validations": {
+                "required": true,
+                "choices": [
+                    "Option 1",
+                    "Option 2",
+                    "Option 3"
+                ]
+            }
+        }
+    },
+    {
+        "model": "forms.fieldpreset",
+        "pk": 28,
+        "fields": {
+            "name": "Multi Select (Checkboxes)",
+            "description": "Choose multiple options",
+            "field_type": 17,
+            "default_label": "Select Options",
+            "default_help_text": "Select all that apply",
+            "default_validations": {
+                "required": true,
+                "choices": [
+                    "Option A",
+                    "Option B",
+                    "Option C"
+                ]
+            }
+        }
+    },
+    {
+        "model": "forms.fieldpreset",
+        "pk": 29,
+        "fields": {
+            "name": "Priority Level (Low / Medium / High)",
+            "description": "Task or ticket priority",
+            "field_type": 1,
+            "default_label": "Priority",
+            "default_help_text": "Select priority level",
+            "default_validations": {
+                "required": true,
+                "choices": [
+                    "Low",
+                    "Medium",
+                    "High"
+                ]
+            }
+        }
+    },
+    {
+        "model": "forms.fieldpreset",
+        "pk": 30,
+        "fields": {
+            "name": "Rating Scale (Likert)",
+            "description": "Rating from 1 to 5",
+            "field_type": 6,
+            "default_label": "Rating",
+            "default_help_text": "Select rating from 1-5",
+            "default_validations": {
+                "required": true,
+                "min": 1,
+                "max": 5
+            }
+        }
+    },
+    {
+        "model": "forms.fieldpreset",
+        "pk": 31,
+        "fields": {
+            "name": "Short Text Answer",
+            "description": "Single line text input",
+            "field_type": 1,
+            "default_label": "Short Answer",
+            "default_help_text": "Enter your answer",
+            "default_validations": {
+                "required": true,
+                "max_length": 255
+            }
+        }
+    },
+    {
+        "model": "forms.fieldpreset",
+        "pk": 32,
+        "fields": {
+            "name": "Long Text Answer",
+            "description": "Multi-line text input",
+            "field_type": 2,
+            "default_label": "Long Answer",
+            "default_help_text": "Enter a detailed response",
+            "default_validations": {
+                "required": false,
+                "max_length": 2000
+            }
+        }
+    },
+    {
+        "model": "forms.fieldpreset",
+        "pk": 33,
+        "fields": {
+            "name": "Comments / Notes",
+            "description": "Optional notes",
+            "field_type": 2,
+            "default_label": "Comments",
+            "default_help_text": "Add any notes or comments",
+            "default_validations": {
+                "required": false,
+                "max_length": 1000
+            }
+        }
+    },
+    {
+        "model": "forms.fieldpreset",
+        "pk": 34,
+        "fields": {
+            "name": "File Upload",
+            "description": "Upload a file",
+            "field_type": 19,
+            "default_label": "Upload File",
+            "default_help_text": "Choose a file to upload",
+            "default_validations": {
+                "required": false,
+                "allowed_types": [
+                    "pdf",
+                    "doc",
+                    "docx",
+                    "jpg",
+                    "png"
+                ],
+                "max_size": 10485760
+            }
+        }
+    },
+    {
+        "model": "forms.fieldpreset",
+        "pk": 35,
+        "fields": {
+            "name": "Image Upload",
+            "description": "Upload an image file",
+            "field_type": 20,
+            "default_label": "Upload Image",
+            "default_help_text": "Choose an image",
+            "default_validations": {
+                "required": false,
+                "allowed_types": [
+                    "jpg",
+                    "jpeg",
+                    "png",
+                    "gif"
+                ],
+                "max_size": 5242880
+            }
+        }
+    },
+    {
+        "model": "forms.fieldpreset",
+        "pk": 36,
+        "fields": {
+            "name": "Signature",
+            "description": "Digital signature input",
+            "field_type": 20,
+            "default_label": "Signature",
+            "default_help_text": "Sign using mouse or touchscreen",
+            "default_validations": {
+                "required": true
+            }
+        }
+    },
+    {
+        "model": "forms.fieldpreset",
+        "pk": 37,
+        "fields": {
+            "name": "URL / Website",
+            "description": "Website or link",
+            "field_type": 5,
+            "default_label": "Website",
+            "default_help_text": "Enter a valid URL",
+            "default_validations": {
+                "required": false,
+                "regex": "^(https?|ftp)://[^\\s/$.?#].[^\\s]*$"
+            }
+        }
+    },
+    {
+        "model": "forms.fieldpreset",
+        "pk": 38,
+        "fields": {
+            "name": "Consent Checkbox",
+            "description": "User consent required",
+            "field_type": 11,
+            "default_label": "I consent",
+            "default_help_text": "Check to give consent",
+            "default_validations": {
+                "required": true
+            }
+        }
+    },
+    {
+        "model": "forms.fieldpreset",
+        "pk": 39,
+        "fields": {
+            "name": "Terms & Conditions Acceptance",
+            "description": "User must accept terms",
+            "field_type": 11,
+            "default_label": "Accept Terms & Conditions",
+            "default_help_text": "You must accept to proceed",
+            "default_validations": {
+                "required": true
+            }
+        }
+    },
+    {
+        "model": "forms.fieldpreset",
+        "pk": 40,
+        "fields": {
+            "name": "Hidden Field (System / URL Param)",
+            "description": "Hidden metadata field",
+            "field_type": 17,
+            "default_label": "Hidden Field",
+            "default_help_text": "",
+            "default_validations": {
+                "required": false
+            }
+        }
+    },
+    {
+        "model": "forms.fieldpreset",
+        "pk": 41,
+        "fields": {
+            "name": "Submission ID (System Generated)",
+            "description": "Auto-generated UUID for submission",
+            "field_type": 16,
+            "default_label": "Submission ID",
+            "default_help_text": "",
+            "default_validations": {
+                "required": true
+            }
+        }
+    },
+    {
+        "model": "forms.fieldpreset",
+        "pk": 42,
+        "fields": {
+            "name": "Submission Timestamp",
+            "description": "System-generated timestamp",
+            "field_type": 14,
+            "default_label": "Submission Timestamp",
+            "default_help_text": "",
+            "default_validations": {
+                "required": true
+            }
+        }
+    },
+    {
+        "model": "forms.fieldpreset",
+        "pk": 43,
+        "fields": {
+            "name": "GPS Location (Lat/Long)",
+            "description": "User location coordinates",
+            "field_type": 1,
+            "default_label": "Location",
+            "default_help_text": "Enter latitude and longitude",
+            "default_validations": {
+                "required": false,
+                "regex": "^[-+]?([1-8]?\\d(\\.\\d+)?|90(\\.0+)?)$"
+            }
+        }
+    },
+    {
+        "model": "forms.fieldpreset",
+        "pk": 44,
+        "fields": {
+            "name": "Numeric & Financial",
+            "description": "Generic number field",
+            "field_type": 6,
+            "default_label": "Number",
+            "default_help_text": "Enter a numeric value",
+            "default_validations": {
+                "required": false
+            }
+        }
+    },
+    {
+        "model": "forms.fieldpreset",
+        "pk": 45,
+        "fields": {
+            "name": "Integer Number",
+            "description": "Whole number input",
+            "field_type": 6,
+            "default_label": "Integer",
+            "default_help_text": "Enter integer",
+            "default_validations": {
+                "required": false
+            }
+        }
+    },
+    {
+        "model": "forms.fieldpreset",
+        "pk": 46,
+        "fields": {
+            "name": "Decimal Number",
+            "description": "Decimal number input",
+            "field_type": 10,
+            "default_label": "Decimal",
+            "default_help_text": "Enter decimal value",
+            "default_validations": {
+                "required": false
+            }
+        }
+    },
+    {
+        "model": "forms.fieldpreset",
+        "pk": 47,
+        "fields": {
+            "name": "Positive Integer",
+            "description": "Positive whole number",
+            "field_type": 8,
+            "default_label": "Positive Integer",
+            "default_help_text": "Enter positive integer",
+            "default_validations": {
+                "required": false,
+                "min": 0
+            }
+        }
+    },
+    {
+        "model": "forms.fieldpreset",
+        "pk": 48,
+        "fields": {
+            "name": "Float Number",
+            "description": "Floating-point number",
+            "field_type": 9,
+            "default_label": "Float",
+            "default_help_text": "Enter float number",
+            "default_validations": {
+                "required": false
+            }
+        }
+    },
+    {
+        "model": "forms.fieldpreset",
+        "pk": 49,
+        "fields": {
+            "name": "Binary Field",
+            "description": "Generic binary input",
+            "field_type": 18,
+            "default_label": "Binary",
+            "default_help_text": "Enter binary data",
+            "default_validations": {
+                "required": false
+            }
+        }
+    },
+    {
+        "model": "forms.fieldpreset",
+        "pk": 50,
+        "fields": {
+            "name": "JSON Field",
+            "description": "Generic JSON input",
+            "field_type": 17,
+            "default_label": "JSON",
+            "default_help_text": "Enter JSON data",
+            "default_validations": {
+                "required": false
+            }
+        }
+    },
+    {
+        "model": "forms.fieldpreset",
+        "pk": 51,
+        "fields": {
+            "name": "Slug Field",
+            "description": "URL-friendly short text",
+            "field_type": 4,
+            "default_label": "Slug",
+            "default_help_text": "Enter slug (a-z, 0-9, -)",
+            "default_validations": {
+                "required": false,
+                "regex": "^[a-z0-9-]+$"
+            }
+        }
+    },
+    {
+        "model": "forms.fieldpreset",
+        "pk": 52,
+        "fields": {
+            "name": "IP Address",
+            "description": "IPv4 or IPv6 address",
+            "field_type": 21,
+            "default_label": "IP Address",
+            "default_help_text": "Enter valid IP address",
+            "default_validations": {
+                "required": false,
+                "regex": "^([0-9]{1,3}\\.){3}[0-9]{1,3}$"
+            }
+        }
+    }
+]

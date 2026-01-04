@@ -1,9 +1,9 @@
 from django import forms
 
-from .models import Formi
+from .models import Form
 
 
-class FormiForm(forms.ModelForm):
+class FormForm(forms.ModelForm):
     class Meta:
-        model = Formi
+        model = Form
         fields = ("title",)

@@ -1,0 +1,210 @@
+[
+    {
+        "model": "forms.fieldtype",
+        "pk": 1,
+        "fields": {
+            "key": "char",
+            "label": "CharField"
+        }
+    },
+    {
+        "model": "forms.fieldtype",
+        "pk": 2,
+        "fields": {
+            "key": "text",
+            "label": "TextField"
+        }
+    },
+    {
+        "model": "forms.fieldtype",
+        "pk": 3,
+        "fields": {
+            "key": "email",
+            "label": "EmailField"
+        }
+    },
+    {
+        "model": "forms.fieldtype",
+        "pk": 4,
+        "fields": {
+            "key": "slug",
+            "label": "SlugField"
+        }
+    },
+    {
+        "model": "forms.fieldtype",
+        "pk": 5,
+        "fields": {
+            "key": "url",
+            "label": "URLField"
+        }
+    },
+    {
+        "model": "forms.fieldtype",
+        "pk": 6,
+        "fields": {
+            "key": "integer",
+            "label": "IntegerField"
+        }
+    },
+    {
+        "model": "forms.fieldtype",
+        "pk": 7,
+        "fields": {
+            "key": "big_integer",
+            "label": "BigIntegerField"
+        }
+    },
+    {
+        "model": "forms.fieldtype",
+        "pk": 8,
+        "fields": {
+            "key": "positive_integer",
+            "label": "PositiveIntegerField"
+        }
+    },
+    {
+        "model": "forms.fieldtype",
+        "pk": 9,
+        "fields": {
+            "key": "float",
+            "label": "FloatField"
+        }
+    },
+    {
+        "model": "forms.fieldtype",
+        "pk": 10,
+        "fields": {
+            "key": "decimal",
+            "label": "DecimalField"
+        }
+    },
+    {
+        "model": "forms.fieldtype",
+        "pk": 11,
+        "fields": {
+            "key": "boolean",
+            "label": "BooleanField"
+        }
+    },
+    {
+        "model": "forms.fieldtype",
+        "pk": 12,
+        "fields": {
+            "key": "date",
+            "label": "DateField"
+        }
+    },
+    {
+        "model": "forms.fieldtype",
+        "pk": 13,
+        "fields": {
+            "key": "time",
+            "label": "TimeField"
+        }
+    },
+    {
+        "model": "forms.fieldtype",
+        "pk": 14,
+        "fields": {
+            "key": "datetime",
+            "label": "DateTimeField"
+        }
+    },
+    {
+        "model": "forms.fieldtype",
+        "pk": 15,
+        "fields": {
+            "key": "duration",
+            "label": "DurationField"
+        }
+    },
+    {
+        "model": "forms.fieldtype",
+        "pk": 16,
+        "fields": {
+            "key": "uuid",
+            "label": "UUIDField"
+        }
+    },
+    {
+        "model": "forms.fieldtype",
+        "pk": 17,
+        "fields": {
+            "key": "json",
+            "label": "JSONField"
+        }
+    },
+    {
+        "model": "forms.fieldtype",
+        "pk": 18,
+        "fields": {
+            "key": "binary",
+            "label": "BinaryField"
+        }
+    },
+    {
+        "model": "forms.fieldtype",
+        "pk": 19,
+        "fields": {
+            "key": "file",
+            "label": "FileField"
+        }
+    },
+    {
+        "model": "forms.fieldtype",
+        "pk": 20,
+        "fields": {
+            "key": "image",
+            "label": "ImageField"
+        }
+    },
+    {
+        "model": "forms.fieldtype",
+        "pk": 21,
+        "fields": {
+            "key": "ip_address",
+            "label": "GenericIPAddressField"
+        }
+    },
+    {
+        "model": "forms.fieldtype",
+        "pk": 22,
+        "fields": {
+            "key": "array",
+            "label": "ArrayField (PostgreSQL)"
+        }
+    },
+    {
+        "model": "forms.fieldtype",
+        "pk": 23,
+        "fields": {
+            "key": "range",
+            "label": "RangeField (PostgreSQL)"
+        }
+    },
+    {
+        "model": "forms.fieldtype",
+        "pk": 24,
+        "fields": {
+            "key": "integer_range",
+            "label": "IntegerRangeField (PostgreSQL)"
+        }
+    },
+    {
+        "model": "forms.fieldtype",
+        "pk": 25,
+        "fields": {
+            "key": "date_range",
+            "label": "DateRangeField (PostgreSQL)"
+        }
+    },
+    {
+        "model": "forms.fieldtype",
+        "pk": 26,
+        "fields": {
+            "key": "datetime_range",
+            "label": "DateTimeRangeField (PostgreSQL)"
+        }
+    }
+]

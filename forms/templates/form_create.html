@@ -169,7 +169,7 @@
                       <button
                         type="button"
                         class="block rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:focus-visible:outline-indigo-500 hover:cursor-pointer"
-                        hx-get="{% url 'formi_field_component' %}"
+                        hx-get="{% url 'form_field_component' %}"
                         hx-swap="beforeend"
                         hx-target="#section-1-fields"
                       >
@@ -220,7 +220,7 @@
                           </thead>
                           <tbody
                             class="divide-y divide-gray-200 dark:divide-white/10"
-                            hx-get="{% url 'formi_field_component' %}"
+                            hx-get="{% url 'form_field_component' %}"
                             hx-swap="innerHTML"
                             hx-trigger="load"
                           >
@@ -294,7 +294,7 @@
                                   type="button"
                                   hx-params="none"
                                   class="text-red-600 hover:text-red-900 dark:text-red-400 dark:hover:text-red-300 pr-2 hover:cursor-pointer"
-                                  hx-delete="{% url 'formi_field_component' %}"
+                                  hx-delete="{% url 'form_field_component' %}"
                                   hx-swap="delete"
                                 >
                                   Delete<span class="sr-only"
