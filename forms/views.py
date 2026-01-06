@@ -12,7 +12,7 @@ from django.views.generic import (
 )
 
 from .forms import FormForm
-from .models import Form
+from .models import Form, FormField
 
 
 # Create your views here.
@@ -53,3 +53,18 @@ class FormCreatePresetView(RedirectView):
         print(preset)
 
         return super().get(request, *args, **kwargs)
+
+
+@method_decorator(csrf_exempt, name="dispatch")
+class FormFieldTemplateView(DetailView):
+    model = FormField
+
+    def get_template_names(self):
+        field_type = (
+            self.object.field_type
+            and self.object.field_type.key  # TODO: Is this troublesome?
+        ) or self.object.preset.field_type.key
+        return [f"fields/{field_type}.html"]
+
+    def get_context_data(self, **kwargs):
+        return super().get_context_data(**kwargs)

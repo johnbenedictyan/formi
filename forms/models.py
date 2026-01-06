@@ -33,12 +33,14 @@ class FieldPreset(models.Model):
 
 
 class FormField(models.Model):
-    form = models.ForeignKey("Form", on_delete=models.CASCADE)
+    form = models.ForeignKey("Form", related_name="fields", on_delete=models.CASCADE)
     preset = models.ForeignKey(FieldPreset, on_delete=models.PROTECT)
     order = models.PositiveIntegerField()
     conditional_logic = models.JSONField(default=dict, blank=True)
 
-    field_type = models.ForeignKey(FieldType, null=True, on_delete=models.PROTECT)
+    field_type = models.ForeignKey(
+        FieldType, null=True, blank=True, on_delete=models.PROTECT
+    )
     label = models.CharField(max_length=200, blank=True)
     help_text = models.CharField(max_length=300, blank=True)
     validations = models.JSONField(default=dict, blank=True)
@@ -48,7 +50,16 @@ class FormField(models.Model):
         verbose_name_plural = _("Form Fields")
 
     def __str__(self):
-        return f"{self.form.title} - {self.label or self.preset.name}"
+        return f"{self.form.title} - {self.label or self.preset.name} - {self.order}"
+
+    def get_absolute_url(self):
+        return reverse("form_field_component", kwargs={"pk": self.pk})
+
+    def get_label(self):
+        return self.label or self.preset.default_label
+
+    def get_help_text(self):
+        return self.help_text or self.preset.default_help_text
 
 
 # Sample Validation
@@ -108,6 +119,9 @@ class Form(models.Model):
 
     def get_edit_url(self):
         return reverse("form_update", kwargs={"pk": self.pk})
+
+    def get_fields(self):
+        return self.fields.order_by("order")
 
 
 class FormResponse(models.Model):
