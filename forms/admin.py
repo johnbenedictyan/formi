@@ -1,20 +1,22 @@
 from django.contrib import admin
 
 from .models import (
-    FieldPreset,
+    FieldChoice,
     FieldType,
     Form,
     FormField,
+    FormFieldChoiceMembership,
+    FormFieldGroup,
     FormFieldResponse,
-    FormFieldRule,
     FormResponse,
 )
 
 # Register your models here.
+admin.site.register(FieldChoice)
+admin.site.register(FieldType)
 admin.site.register(Form)
 admin.site.register(FormField)
+admin.site.register(FormFieldChoiceMembership)
+admin.site.register(FormFieldGroup)
 admin.site.register(FormFieldResponse)
-admin.site.register(FormFieldRule)
 admin.site.register(FormResponse)
-admin.site.register(FieldPreset)
-admin.site.register(FieldType)

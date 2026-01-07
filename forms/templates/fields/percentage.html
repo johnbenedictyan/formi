@@ -1,0 +1,63 @@
+<div>
+    <div class="flex justify-between">
+        <label for="{{ object.get_label }}" class="block text-sm/6 font-medium text-gray-900 dark:text-white">
+            {{ object.get_label }}
+        </label>
+
+        {% if field_is_optional %}
+        <span id="{{ object.get_label }}-optional" class="text-sm text-gray-500 dark:text-gray-400">
+            Optional
+        </span>
+        {% endif %}
+    </div>
+
+    <div class="mt-2">
+        <div class="
+        flex items-center rounded-md px-3
+        bg-white dark:bg-white/5
+        outline outline-1 -outline-offset-1
+        outline-gray-300 dark:outline-white/10
+        focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-600 dark:focus-within:outline-indigo-500
+        {% if field_has_error %}
+          outline-red-300 dark:outline-red-500/50
+          focus-within:outline-red-600 dark:focus-within:outline-red-400
+        {% endif %}
+      ">
+            <input id="{{ object.get_label }}" name="{{ object.get_label }}" type="number" min="0" max="100" step="1"
+                aria-invalid="{{ field_has_error }}" aria-describedby="{{ object.get_label }}-error" class="
+          block w-full bg-transparent py-1.5 text-sm text-gray-900 placeholder:text-gray-400
+          focus:outline-none
+          dark:text-white dark:placeholder:text-gray-500
+          {% if field_has_error %}
+            text-red-900 placeholder:text-red-300
+            dark:text-red-400 dark:placeholder:text-red-400/70
+          {% endif %}
+        " />
+
+            {% if field_has_error %}
+            <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"
+                class="ml-2 size-5 text-red-500 dark:text-red-400">
+                <path
+                    d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14ZM8 4a.75.75 0 0 1 .75.75v3a.75.75 0 0 1-1.5 0v-3A.75.75 0 0 1 8 4Zm0 8a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z"
+                    fill-rule="evenodd" clip-rule="evenodd" />
+            </svg>
+            {% endif %}
+
+            <div class="ml-2 shrink-0 select-none text-sm text-gray-500 dark:text-gray-400">
+                %
+            </div>
+        </div>
+    </div>
+
+    {% if object.get_help_text %}
+    <p id="{{ object.get_label }}-description" class="mt-2 text-sm text-gray-500 dark:text-gray-400">
+        {{ object.get_help_text }}
+    </p>
+    {% endif %}
+
+    {% if field_has_error %}
+    <p id="{{ object.get_label }}-error" class="mt-2 text-sm text-red-600 dark:text-red-400">
+        Not a valid {{ object.get_label }} address.
+    </p>
+    {% endif %}
+</div>

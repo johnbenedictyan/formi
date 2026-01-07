@@ -1,0 +1,30 @@
+<div class="col-span-full">
+    <label for="{{ object.get_label }}" class="block cursor-pointer">
+        <span class="block text-sm/6 font-medium text-gray-900 dark:text-white">
+            {{ object.get_label }}
+        </span>
+
+        <div class="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25
+             px-6 py-10 hover:border-indigo-500
+             dark:border-white/25 dark:hover:border-indigo-400">
+            <div class="text-center">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    stroke="currentColor" class="mx-auto size-12 text-gray-300 dark:text-gray-600">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="m2.25 15.75 5.159-5.159a2.25 2.25 0 0 1 3.182 0l5.159 5.159m-1.5-1.5 1.409-1.409a2.25 2.25 0 0 1 3.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 0 0 1.5-1.5V6a1.5 1.5 0 0 0-1.5-1.5H3.75A1.5 1.5 0 0 0 2.25 6v12a1.5 1.5 0 0 0 1.5 1.5Zm10.5-11.25h.008v.008h-.008V8.25Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
+                </svg>
+
+
+                <p class="mt-4 text-sm/6 text-gray-600 dark:text-gray-400">
+                    Click to upload
+                </p>
+
+                <p class="mt-1 text-xs/5 text-gray-600 dark:text-gray-400">
+                    {{ object.get_help_text }}
+                </p>
+            </div>
+        </div>
+
+        <input id="{{ object.get_label }}" name="{{ object.get_label }}" type="file" class="sr-only" />
+    </label>
+</div>

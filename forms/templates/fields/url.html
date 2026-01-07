@@ -1,11 +1,69 @@
 <div>
-  <label for="company-website" class="block text-sm/6 font-medium text-gray-900 dark:text-white">Company website</label>
+  <div class="flex justify-between">
+    <label for="{{ object.get_label }}" class="block text-sm/6 font-medium text-gray-900 dark:text-white">
+      {{ object.get_label }}
+    </label>
+
+    {% if field_is_optional %}
+    <span id="{{ object.get_label }}-optional" class="text-sm/6 text-gray-500 dark:text-gray-400">
+      Optional
+    </span>
+    {% endif %}
+  </div>
+
   <div class="mt-2">
-    <div
-      class="flex items-center rounded-md bg-white pl-3 outline-1 -outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-600 dark:bg-white/5 dark:outline-white/10 dark:focus-within:outline-indigo-500">
-      <div class="shrink-0 text-base text-gray-500 select-none sm:text-sm/6 dark:text-gray-400">https://</div>
-      <input id="company-website" type="text" name="company-website" placeholder="www.example.com"
-        class="block min-w-0 grow py-1.5 pr-3 pl-1 text-base text-gray-900 placeholder:text-gray-400 focus:outline-none sm:text-sm/6 dark:text-white dark:placeholder:text-gray-500" />
+    <div class="
+        flex items-center rounded-md bg-white pl-3
+        outline outline-1 -outline-offset-1
+        dark:bg-white/5 dark:outline-white/10
+
+        focus-within:outline-2 focus-within:-outline-offset-2
+        focus-within:outline-indigo-600 dark:focus-within:outline-indigo-500
+
+        {% if field_has_error %}
+          outline-red-300
+          focus-within:outline-red-600
+          dark:outline-red-500/50
+          dark:focus-within:outline-red-400
+        {% endif %}
+      ">
+      <div class="shrink-0 select-none text-sm/6 text-gray-500 dark:text-gray-400">
+        https://
+      </div>
+
+      <input id="{{ object.get_label }}" name="{{ object.get_label }}" type="text" placeholder="www.example.com"
+        aria-invalid="{{ field_has_error }}" aria-describedby="{{ object.get_label }}-error" class="
+          block min-w-0 grow bg-transparent py-1.5 pl-1 pr-3
+          text-sm/6 text-gray-900 placeholder:text-gray-400
+          focus:outline-none
+          dark:text-white dark:placeholder:text-gray-500
+
+          {% if field_has_error %}
+            text-red-900 placeholder:text-red-300
+            dark:text-red-400 dark:placeholder:text-red-400/70
+          {% endif %}
+        " />
+
+      {% if field_has_error %}
+      <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"
+        class="mr-3 size-4 text-red-500 dark:text-red-400">
+        <path
+          d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14ZM8 4a.75.75 0 0 1 .75.75v3a.75.75 0 0 1-1.5 0v-3A.75.75 0 0 1 8 4Zm0 8a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z"
+          fill-rule="evenodd" clip-rule="evenodd" />
+      </svg>
+      {% endif %}
     </div>
+
+    {% if object.get_help_text %}
+    <p id="{{ object.get_label }}-description" class="mt-2 text-sm text-gray-500 dark:text-gray-400">
+      {{ object.get_help_text }}
+    </p>
+    {% endif %}
+
+    {% if field_has_error %}
+    <p id="{{ object.get_label }}-error" class="mt-2 text-sm text-red-600 dark:text-red-400">
+      Not a valid {{ object.get_label }} address.
+    </p>
+    {% endif %}
   </div>
 </div>

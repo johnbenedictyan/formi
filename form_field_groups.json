@@ -1,0 +1,54 @@
+[
+    {
+        "model": "forms.formfieldgroup",
+        "pk": 1,
+        "fields": {
+            "form": 1,
+            "order": 1,
+            "conditional_logic": {},
+            "field_type": 26,
+            "label": "",
+            "help_text": "",
+            "validations": {}
+        }
+    },
+    {
+        "model": "forms.formfieldgroup",
+        "pk": 2,
+        "fields": {
+            "form": 1,
+            "order": 2,
+            "conditional_logic": {},
+            "field_type": 27,
+            "label": "",
+            "help_text": "",
+            "validations": {}
+        }
+    },
+    {
+        "model": "forms.formfieldgroup",
+        "pk": 3,
+        "fields": {
+            "form": 1,
+            "order": 3,
+            "conditional_logic": {},
+            "field_type": 30,
+            "label": "",
+            "help_text": "",
+            "validations": {}
+        }
+    },
+    {
+        "model": "forms.formfieldgroup",
+        "pk": 4,
+        "fields": {
+            "form": 1,
+            "order": 4,
+            "conditional_logic": {},
+            "field_type": 2,
+            "label": "",
+            "help_text": "",
+            "validations": {}
+        }
+    }
+]

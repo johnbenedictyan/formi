@@ -1,3 +1,5 @@
+import uuid
+
 from django.conf import settings
 from django.db import models
 from django.urls import reverse
@@ -6,41 +8,59 @@ from django.utils.translation import gettext_lazy as _
 
 class FieldType(models.Model):
     key = models.CharField(max_length=50, unique=True)
-    label = models.CharField(max_length=100)
+    description = models.CharField(max_length=100)
+    default_label = models.CharField(max_length=100)
+    default_help_text = models.CharField(max_length=300, blank=True)
+    default_validations = models.JSONField(default=dict, blank=True)
+
+    supports_choices = models.BooleanField(default=False)
 
     class Meta:
         verbose_name = _("Field Type")
         verbose_name_plural = _("Field Types")
 
     def __str__(self):
-        return self.label
+        return self.default_label
 
 
-class FieldPreset(models.Model):
-    name = models.CharField(max_length=100)
+class FormFieldGroup(models.Model):
+    form = models.ForeignKey(
+        "Form", related_name="field_groups", on_delete=models.CASCADE
+    )
+
+    key = models.CharField(
+        max_length=50, help_text="machine key e.g. address, billing_address"
+    )
+
+    label = models.CharField(max_length=200)
     description = models.TextField(blank=True)
-    field_type = models.ForeignKey(FieldType, on_delete=models.PROTECT)
-    default_label = models.CharField(max_length=200)
-    default_help_text = models.CharField(max_length=300, blank=True)
-    default_validations = models.JSONField(default=dict)
+
+    order = models.PositiveIntegerField()
 
     class Meta:
-        verbose_name = _("Field Preset")
-        verbose_name_plural = _("Field Presets")
+        ordering = ["order"]
+        unique_together = ("form", "key")
 
     def __str__(self):
-        return self.name
+        return f"{self.form.title} - {self.label}"
 
 
 class FormField(models.Model):
     form = models.ForeignKey("Form", related_name="fields", on_delete=models.CASCADE)
-    preset = models.ForeignKey(FieldPreset, on_delete=models.PROTECT)
     order = models.PositiveIntegerField()
     conditional_logic = models.JSONField(default=dict, blank=True)
+    group = models.ForeignKey(
+        "FormFieldGroup",
+        related_name="fields",
+        null=True,
+        blank=True,
+        on_delete=models.CASCADE,
+    )
 
     field_type = models.ForeignKey(
         FieldType, null=True, blank=True, on_delete=models.PROTECT
     )
+    choices = models.ManyToManyField("FieldChoice", through="FormFieldChoiceMembership")
     label = models.CharField(max_length=200, blank=True)
     help_text = models.CharField(max_length=300, blank=True)
     validations = models.JSONField(default=dict, blank=True)
@@ -50,16 +70,50 @@ class FormField(models.Model):
         verbose_name_plural = _("Form Fields")
 
     def __str__(self):
-        return f"{self.form.title} - {self.label or self.preset.name} - {self.order}"
+        return f"{self.form.title} - {self.get_label()} - {self.order}"
 
     def get_absolute_url(self):
         return reverse("form_field_component", kwargs={"pk": self.pk})
 
     def get_label(self):
-        return self.label or self.preset.default_label
+        return self.label or self.field_type.default_label
 
     def get_help_text(self):
-        return self.help_text or self.preset.default_help_text
+        return self.help_text or self.field_type.default_help_text
+
+    def get_choices(self):
+        if not self.field_type.supports_choices:
+            return None
+        return [(c.value, c.label) for c in self.choices.all()]
+    
+    def get_template_name(self):
+        return f"fields/{self.field_type.key}.html"
+    
+    def get_value(self):
+        if self.field_type.key == 'submission_id':
+            return str(uuid.uuid4())
+
+
+class FieldChoice(models.Model):
+    label = models.CharField(max_length=200)
+    value = models.CharField(max_length=100)
+
+    def __str__(self):
+        return f"{self.label} ({self.value})"
+    
+
+
+class FormFieldChoiceMembership(models.Model):
+    field = models.ForeignKey("FormField", on_delete=models.CASCADE)
+    choice = models.ForeignKey("FieldChoice", on_delete=models.CASCADE)
+    order = models.PositiveIntegerField(default=0)
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(
+                fields=["field", "choice"], name="unique_field_choice"
+            )
+        ]
 
 
 # Sample Validation
@@ -168,23 +222,3 @@ class FormFieldResponse(models.Model):
 
     def get_absolute_url(self):
         return reverse("form_field_response_detail", kwargs={"pk": self.pk})
-
-
-class FormFieldRule(models.Model):
-    field = models.ForeignKey(
-        FormField, verbose_name=_("form field"), on_delete=models.CASCADE
-    )
-
-    condition = models.JSONField()
-
-    action = models.JSONField()
-
-    class Meta:
-        verbose_name = _("Form Field Rule")
-        verbose_name_plural = _("Form Field Rules")
-
-    def __str__(self):
-        return self.name
-
-    def get_absolute_url(self):
-        return reverse("form_field_rule_detail", kwargs={"pk": self.pk})

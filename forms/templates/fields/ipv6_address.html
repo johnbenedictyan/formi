@@ -1,0 +1,55 @@
+<div class="col-span-2">
+    <label class="block text-sm font-medium text-gray-700 dark:text-gray-200">
+        {{object.get_label}}
+    </label>
+
+    <div class="mt-2 flex flex-wrap items-center gap-2">
+        <!-- Segment 1 -->
+        <input type="text" inputmode="text" maxlength="4" placeholder="2001" class="w-20 rounded-md border border-gray-300 bg-white px-2 py-2 text-center text-sm
+             font-mono tracking-wide uppercase
+             focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500
+             dark:border-gray-700 dark:bg-gray-900 dark:text-white" />
+        <span class="text-gray-500">:</span>
+
+        <!-- Segment 2 -->
+        <input type="text" maxlength="4" placeholder="0db8"
+            class="w-20 rounded-md border border-gray-300 bg-white px-2 py-2 text-center text-sm font-mono tracking-wide uppercase focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 dark:border-gray-700 dark:bg-gray-900 dark:text-white" />
+        <span class="text-gray-500">:</span>
+
+        <!-- Segment 3 -->
+        <input type="text" maxlength="4" placeholder="85a3"
+            class="w-20 rounded-md border border-gray-300 bg-white px-2 py-2 text-center text-sm font-mono tracking-wide uppercase focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 dark:border-gray-700 dark:bg-gray-900 dark:text-white" />
+        <span class="text-gray-500">:</span>
+
+        <!-- Segment 4 -->
+        <input type="text" maxlength="4" placeholder="0000"
+            class="w-20 rounded-md border border-gray-300 bg-white px-2 py-2 text-center text-sm font-mono tracking-wide uppercase focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 dark:border-gray-700 dark:bg-gray-900 dark:text-white" />
+        <span class="text-gray-500">:</span>
+
+        <!-- Segment 5 -->
+        <input type="text" maxlength="4" placeholder="0000"
+            class="w-20 rounded-md border border-gray-300 bg-white px-2 py-2 text-center text-sm font-mono tracking-wide uppercase focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 dark:border-gray-700 dark:bg-gray-900 dark:text-white" />
+        <span class="text-gray-500">:</span>
+
+        <!-- Segment 6 -->
+        <input type="text" maxlength="4" placeholder="8a2e"
+            class="w-20 rounded-md border border-gray-300 bg-white px-2 py-2 text-center text-sm font-mono tracking-wide uppercase focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 dark:border-gray-700 dark:bg-gray-900 dark:text-white" />
+        <span class="text-gray-500">:</span>
+
+        <!-- Segment 7 -->
+        <input type="text" maxlength="4" placeholder="0370"
+            class="w-20 rounded-md border border-gray-300 bg-white px-2 py-2 text-center text-sm font-mono tracking-wide uppercase focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 dark:border-gray-700 dark:bg-gray-900 dark:text-white" />
+        <span class="text-gray-500">:</span>
+
+        <!-- Segment 8 -->
+        <input type="text" maxlength="4" placeholder="7334"
+            class="w-20 rounded-md border border-gray-300 bg-white px-2 py-2 text-center text-sm font-mono tracking-wide uppercase focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 dark:border-gray-700 dark:bg-gray-900 dark:text-white" />
+    </div>
+
+    <p id="{{object.get_label}}-description" class="mt-2 text-sm text-gray-500 dark:text-gray-400">
+        {{object.get_help_text}}</p>
+    {% if field_has_error %}
+    <p id="{{object.get_label}}-error" class="mt-2 text-sm text-red-600 dark:text-red-400">Not a valid
+        {{object.get_label}}</p>
+    {% endif %}
+</div>

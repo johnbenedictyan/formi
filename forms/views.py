@@ -60,11 +60,7 @@ class FormFieldTemplateView(DetailView):
     model = FormField
 
     def get_template_names(self):
-        field_type = (
-            self.object.field_type
-            and self.object.field_type.key  # TODO: Is this troublesome?
-        ) or self.object.preset.field_type.key
-        return [f"fields/{field_type}.html"]
+        return [self.object.get_template_name()]
 
     def get_context_data(self, **kwargs):
         return super().get_context_data(**kwargs)

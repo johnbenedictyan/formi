@@ -1,210 +1,68 @@
 [
-    {
-        "model": "forms.fieldtype",
-        "pk": 1,
-        "fields": {
-            "key": "char",
-            "label": "CharField"
-        }
-    },
-    {
-        "model": "forms.fieldtype",
-        "pk": 2,
-        "fields": {
-            "key": "text",
-            "label": "TextField"
-        }
-    },
-    {
-        "model": "forms.fieldtype",
-        "pk": 3,
-        "fields": {
-            "key": "email",
-            "label": "EmailField"
-        }
-    },
-    {
-        "model": "forms.fieldtype",
-        "pk": 4,
-        "fields": {
-            "key": "slug",
-            "label": "SlugField"
-        }
-    },
-    {
-        "model": "forms.fieldtype",
-        "pk": 5,
-        "fields": {
-            "key": "url",
-            "label": "URLField"
-        }
-    },
-    {
-        "model": "forms.fieldtype",
-        "pk": 6,
-        "fields": {
-            "key": "integer",
-            "label": "IntegerField"
-        }
-    },
-    {
-        "model": "forms.fieldtype",
-        "pk": 7,
-        "fields": {
-            "key": "big_integer",
-            "label": "BigIntegerField"
-        }
-    },
-    {
-        "model": "forms.fieldtype",
-        "pk": 8,
-        "fields": {
-            "key": "positive_integer",
-            "label": "PositiveIntegerField"
-        }
-    },
-    {
-        "model": "forms.fieldtype",
-        "pk": 9,
-        "fields": {
-            "key": "float",
-            "label": "FloatField"
-        }
-    },
-    {
-        "model": "forms.fieldtype",
-        "pk": 10,
-        "fields": {
-            "key": "decimal",
-            "label": "DecimalField"
-        }
-    },
-    {
-        "model": "forms.fieldtype",
-        "pk": 11,
-        "fields": {
-            "key": "boolean",
-            "label": "BooleanField"
-        }
-    },
-    {
-        "model": "forms.fieldtype",
-        "pk": 12,
-        "fields": {
-            "key": "date",
-            "label": "DateField"
-        }
-    },
-    {
-        "model": "forms.fieldtype",
-        "pk": 13,
-        "fields": {
-            "key": "time",
-            "label": "TimeField"
-        }
-    },
-    {
-        "model": "forms.fieldtype",
-        "pk": 14,
-        "fields": {
-            "key": "datetime",
-            "label": "DateTimeField"
-        }
-    },
-    {
-        "model": "forms.fieldtype",
-        "pk": 15,
-        "fields": {
-            "key": "duration",
-            "label": "DurationField"
-        }
-    },
-    {
-        "model": "forms.fieldtype",
-        "pk": 16,
-        "fields": {
-            "key": "uuid",
-            "label": "UUIDField"
-        }
-    },
-    {
-        "model": "forms.fieldtype",
-        "pk": 17,
-        "fields": {
-            "key": "json",
-            "label": "JSONField"
-        }
-    },
-    {
-        "model": "forms.fieldtype",
-        "pk": 18,
-        "fields": {
-            "key": "binary",
-            "label": "BinaryField"
-        }
-    },
-    {
-        "model": "forms.fieldtype",
-        "pk": 19,
-        "fields": {
-            "key": "file",
-            "label": "FileField"
-        }
-    },
-    {
-        "model": "forms.fieldtype",
-        "pk": 20,
-        "fields": {
-            "key": "image",
-            "label": "ImageField"
-        }
-    },
-    {
-        "model": "forms.fieldtype",
-        "pk": 21,
-        "fields": {
-            "key": "ip_address",
-            "label": "GenericIPAddressField"
-        }
-    },
-    {
-        "model": "forms.fieldtype",
-        "pk": 22,
-        "fields": {
-            "key": "array",
-            "label": "ArrayField (PostgreSQL)"
-        }
-    },
-    {
-        "model": "forms.fieldtype",
-        "pk": 23,
-        "fields": {
-            "key": "range",
-            "label": "RangeField (PostgreSQL)"
-        }
-    },
-    {
-        "model": "forms.fieldtype",
-        "pk": 24,
-        "fields": {
-            "key": "integer_range",
-            "label": "IntegerRangeField (PostgreSQL)"
-        }
-    },
-    {
-        "model": "forms.fieldtype",
-        "pk": 25,
-        "fields": {
-            "key": "date_range",
-            "label": "DateRangeField (PostgreSQL)"
-        }
-    },
-    {
-        "model": "forms.fieldtype",
-        "pk": 26,
-        "fields": {
-            "key": "datetime_range",
-            "label": "DateTimeRangeField (PostgreSQL)"
-        }
-    }
+    { "model": "forms.fieldtype", "pk": 1, "fields": { "key": "char", "description": "CharField", "default_label": "CharField" } },
+    { "model": "forms.fieldtype", "pk": 2, "fields": { "key": "text", "description": "Multi-line text input", "default_label": "Long Answer", "default_help_text": "Enter a detailed response", "default_validations": { "required": false, "max_length": 2000 } } },
+    { "model": "forms.fieldtype", "pk": 3, "fields": { "key": "email", "description": "User's email address", "default_label": "Email", "default_help_text": "We'll use this email to contact you", "default_validations": { "required": true, "regex": "^[^@]+@[^@]+\\.[^@]+$" } } },
+    { "model": "forms.fieldtype", "pk": 4, "fields": { "key": "alternate_email", "description": "Optional secondary email", "default_label": "Alternate Email", "default_help_text": "Enter an alternate email if available", "default_validations": { "required": false, "regex": "^[^@]+@[^@]+\\.[^@]+$" } } },
+    { "model": "forms.fieldtype", "pk": 5, "fields": { "key": "slug", "description": "SlugField", "default_label": "SlugField" } },
+    { "model": "forms.fieldtype", "pk": 6, "fields": { "key": "url", "description": "URLField", "default_label": "URLField" } },
+    { "model": "forms.fieldtype", "pk": 7, "fields": { "key": "integer", "description": "IntegerField", "default_label": "IntegerField" } },
+    { "model": "forms.fieldtype", "pk": 8, "fields": { "key": "big_integer", "description": "BigIntegerField", "default_label": "BigIntegerField" } },
+    { "model": "forms.fieldtype", "pk": 9, "fields": { "key": "positive_integer", "description": "PositiveIntegerField", "default_label": "PositiveIntegerField", "default_help_text": "Enter an integer value", "default_validations": { "required": false, "min": 0, "max": 1000000 } } },
+    { "model": "forms.fieldtype", "pk": 10, "fields": { "key": "float", "description": "FloatField", "default_label": "FloatField" } },
+    { "model": "forms.fieldtype", "pk": 11, "fields": { "key": "decimal", "description": "DecimalField", "default_label": "DecimalField" } },
+    { "model": "forms.fieldtype", "pk": 12, "fields": { "key": "boolean", "description": "BooleanField", "default_label": "BooleanField" } },
+    { "model": "forms.fieldtype", "pk": 13, "fields": { "key": "duration", "description": "DurationField", "default_label": "DurationField" } },
+    { "model": "forms.fieldtype", "pk": 14, "fields": { "key": "uuid", "description": "UUIDField", "default_label": "UUIDField" } },
+    { "model": "forms.fieldtype", "pk": 15, "fields": { "key": "json", "description": "JSONField", "default_label": "JSONField" } },
+    { "model": "forms.fieldtype", "pk": 16, "fields": { "key": "binary", "description": "BinaryField", "default_label": "BinaryField" } },
+    { "model": "forms.fieldtype", "pk": 17, "fields": { "key": "file", "description": "FileField", "default_label": "FileField" } },
+    { "model": "forms.fieldtype", "pk": 18, "fields": { "key": "image", "description": "ImageField", "default_label": "ImageField" } },
+    { "model": "forms.fieldtype", "pk": 19, "fields": { "key": "ip_address", "description": "GenericIPAddressField", "default_label": "GenericIPAddressField" } },
+    { "model": "forms.fieldtype", "pk": 20, "fields": { "key": "array", "description": "ArrayField (PostgreSQL)", "default_label": "ArrayField" } },
+    { "model": "forms.fieldtype", "pk": 21, "fields": { "key": "range", "description": "RangeField (PostgreSQL)", "default_label": "RangeField (PostgreSQL)" } },
+    { "model": "forms.fieldtype", "pk": 22, "fields": { "key": "integer_range", "description": "IntegerRangeField (PostgreSQL)", "default_label": "IntegerRangeField (PostgreSQL)" } },
+    { "model": "forms.fieldtype", "pk": 23, "fields": { "key": "date_range", "description": "DateRangeField (PostgreSQL)", "default_label": "DateRangeField (PostgreSQL)" } },
+    { "model": "forms.fieldtype", "pk": 24, "fields": { "key": "datetime_range", "description": "DateTimeRangeField (PostgreSQL)", "default_label": "DateTimeRangeField (PostgreSQL)" } },
+    { "model": "forms.fieldtype", "pk": 25, "fields": { "key": "full_name", "description": "A single field for the user's full name", "default_label": "Full Name", "default_help_text": "Please enter your first and last name", "default_validations": { "required": true, "min_length": 2, "max_length": 100, "regex": "^[A-Za-z ]+$" } } },
+    { "model": "forms.fieldtype", "pk": 26, "fields": { "key": "first_name", "description": "User's given name", "default_label": "First Name", "default_help_text": "Enter your first name", "default_validations": { "required": true, "min_length": 1, "max_length": 50, "regex": "^[A-Za-z]+$" } } },
+    { "model": "forms.fieldtype", "pk": 27, "fields": { "key": "last_name", "description": "User's family name", "default_label": "Last Name", "default_help_text": "Enter your last name", "default_validations": { "required": true, "min_length": 1, "max_length": 50, "regex": "^[A-Za-z]+$" } } },
+    { "model": "forms.fieldtype", "pk": 28, "fields": { "key": "preferred_name", "description": "Optional preferred name", "default_label": "Preferred Name", "default_help_text": "Enter a preferred name", "default_validations": { "required": false, "max_length": 50 } } },
+    { "model": "forms.fieldtype", "pk": 29, "fields": { "key": "username", "description": "User's unique identifier", "default_label": "Username", "default_help_text": "Enter your desired username", "default_validations": { "required": true, "min_length": 3, "max_length": 30, "regex": "^[A-Za-z0-9_]+$" } } },
+    { "model": "forms.fieldtype", "pk": 30, "fields": { "key": "phone_number", "description": "User's primary phone number", "default_label": "Phone Number", "default_help_text": "Include country code if applicable", "default_validations": { "required": false, "regex": "^[0-9+\\-() ]+$", "min_length": 7, "max_length": 20 } } },
+    { "model": "forms.fieldtype", "pk": 31, "fields": { "key": "date_of_birth", "description": "User's date of birth", "default_label": "Date of Birth", "default_help_text": "Select your birth date", "default_validations": { "required": true, "min": "1900-01-01", "max": "today" } } },
+    { "model": "forms.fieldtype", "pk": 32, "fields": { "key": "address", "description": "Street address, city, postal code", "default_label": "Address", "default_help_text": "Enter your complete address", "default_validations": { "required": true, "max_length": 500 } } },
+    { "model": "forms.fieldtype", "pk": 33, "fields": { "key": "country", "description": "User's country", "default_label": "Country", "default_help_text": "Select your country", "default_validations": { "required": true } } },
+    { "model": "forms.fieldtype", "pk": 34, "fields": { "key": "time_zone", "description": "User's time zone", "default_label": "Time Zone", "default_help_text": "Select your time zone", "default_validations": { "required": true } } },
+    { "model": "forms.fieldtype", "pk": 35, "fields": { "key": "Company / Organization Name", "description": "Employer or organization", "default_label": "Company / Organization", "default_help_text": "Enter your organization", "default_validations": { "required": false, "max_length": 100 } } },
+    { "model": "forms.fieldtype", "pk": 36, "fields": { "key": "Department / Team", "description": "Team or department within organization", "default_label": "Department / Team", "default_help_text": "Enter your department or team", "default_validations": { "required": false, "max_length": 100 } } },
+    { "model": "forms.fieldtype", "pk": 37, "fields": { "key": "Job Title / Role", "description": "Position or title", "default_label": "Job Title / Role", "default_help_text": "Enter your position or role", "default_validations": { "required": false, "max_length": 100 } } },
+    { "model": "forms.fieldtype", "pk": 38, "fields": { "key": "employee_id", "description": "Organization-assigned ID", "default_label": "Employee ID", "default_help_text": "Enter your employee ID", "default_validations": { "required": false, "regex": "^[A-Za-z0-9]+$", "max_length": 20 } } },
+    { "model": "forms.fieldtype", "pk": 39, "fields": { "key": "date", "description": "Generic date field", "default_label": "Date", "default_help_text": "Select a date", "default_validations": { "required": false } } },
+    { "model": "forms.fieldtype", "pk": 40, "fields": { "key": "time", "description": "Generic time field", "default_label": "Time", "default_help_text": "Select a time", "default_validations": { "required": false } } },
+    { "model": "forms.fieldtype", "pk": 41, "fields": { "key": "date_and_time", "description": "Combined date and time", "default_label": "Date & Time", "default_help_text": "Select date and time", "default_validations": { "required": false } } },
+    { "model": "forms.fieldtype", "pk": 42, "fields": { "key": "Currency Amount", "description": "Financial value", "default_label": "Amount", "default_help_text": "Enter the monetary amount", "default_validations": { "required": false, "min": 0, "max": 100000000 } } },
+    { "model": "forms.fieldtype", "pk": 43, "fields": { "key": "Percentage", "description": "Percentage value", "default_label": "Percentage", "default_help_text": "Enter a percentage between 0-100", "default_validations": { "required": false, "min": 0, "max": 100 } } },
+    { "model": "forms.fieldtype", "pk": 44, "fields": { "key": "Quantity", "description": "Generic quantity", "default_label": "Quantity", "default_help_text": "Enter quantity", "default_validations": { "required": false, "min": 0, "max": 1000000 } } },
+    { "model": "forms.fieldtype", "pk": 45, "fields": { "key": "Yes / No", "description": "Boolean choice", "default_label": "Yes / No", "default_help_text": "Select yes or no", "default_validations": { "required": true } } },
+    { "model": "forms.fieldtype", "pk": 46, "fields": { "key": "select", "description": "Choose one option", "default_label": "Select an Option", "default_help_text": "Choose one", "default_validations": { "required": true } } },
+    { "model": "forms.fieldtype", "pk": 47, "fields": { "key": "Multi Select (Checkboxes)", "description": "Choose multiple options", "default_label": "Select Options", "default_help_text": "Select all that apply", "default_validations": { "required": true } } },
+    { "model": "forms.fieldtype", "pk": 48, "fields": { "key": "Priority Level (Low / Medium / High)", "description": "Task or ticket priority", "default_label": "Priority", "default_help_text": "Select priority level", "default_validations": { "required": true } } },
+    { "model": "forms.fieldtype", "pk": 49, "fields": { "key": "Rating Scale (Likert)", "description": "Rating from 1 to 5", "default_label": "Rating", "default_help_text": "Select rating from 1-5", "default_validations": { "required": true, "min": 1, "max": 5 } } },
+    { "model": "forms.fieldtype", "pk": 50, "fields": { "key": "Short Text Answer", "description": "Single line text input", "default_label": "Short Answer", "default_help_text": "Enter your answer", "default_validations": { "required": true, "max_length": 255 } } },
+    { "model": "forms.fieldtype", "pk": 51, "fields": { "key": "Comments / Notes", "description": "Optional notes", "default_label": "Comments", "default_help_text": "Add any notes or comments", "default_validations": { "required": false, "max_length": 1000 } } },
+    { "model": "forms.fieldtype", "pk": 52, "fields": { "key": "File Upload", "description": "Upload a file", "default_label": "Upload File", "default_help_text": "Choose a file to upload", "default_validations": { "required": false, "allowed_types": ["pdf","doc","docx","jpg","png"], "max_size": 10485760 } } },
+    { "model": "forms.fieldtype", "pk": 53, "fields": { "key": "Image Upload", "description": "Upload an image file", "default_label": "Upload Image", "default_help_text": "Choose an image", "default_validations": { "required": false, "allowed_types": ["jpg","jpeg","png","gif"], "max_size": 5242880 } } },
+    { "model": "forms.fieldtype", "pk": 54, "fields": { "key": "Signature", "description": "Digital signature input", "default_label": "Signature", "default_help_text": "Sign using mouse or touchscreen", "default_validations": { "required": true } } },
+    { "model": "forms.fieldtype", "pk": 55, "fields": { "key": "URL / Website", "description": "Website or link", "default_label": "Website", "default_help_text": "Enter a valid URL", "default_validations": { "required": false, "regex": "^(https?|ftp)://[^\\s/$.?#].[^\\s]*$" } } },
+    { "model": "forms.fieldtype", "pk": 56, "fields": { "key": "Consent Checkbox", "description": "User consent required", "default_label": "I consent", "default_help_text": "Check to give consent", "default_validations": { "required": true } } },
+    { "model": "forms.fieldtype", "pk": 57, "fields": { "key": "Terms & Conditions Acceptance", "description": "User must accept terms", "default_label": "Accept Terms & Conditions", "default_help_text": "You must accept to proceed", "default_validations": { "required": true } } },
+    { "model": "forms.fieldtype", "pk": 58, "fields": { "key": "Hidden Field (System / URL Param)", "description": "Hidden metadata field", "default_label": "Hidden Field", "default_help_text": "", "default_validations": { "required": false } } },
+    { "model": "forms.fieldtype", "pk": 59, "fields": { "key": "Submission ID (System Generated)", "description": "Auto-generated UUID for submission", "default_label": "Submission ID", "default_help_text": "", "default_validations": { "required": true } } },
+    { "model": "forms.fieldtype", "pk": 60, "fields": { "key": "Submission Timestamp", "description": "System-generated timestamp", "default_label": "Submission Timestamp", "default_help_text": "", "default_validations": { "required": true } } },
+    { "model": "forms.fieldtype", "pk": 61, "fields": { "key": "GPS Location (Lat/Long)", "description": "User location coordinates", "default_label": "Location", "default_help_text": "Enter latitude and longitude", "default_validations": { "required": false, "regex": "^[-+]?([1-8]?\\d(\\.\\d+)?|90(\\.0+)?)$" } } },
+    { "model": "forms.fieldtype", "pk": 62, "fields": { "key": "Numeric & Financial", "description": "Generic number field", "default_label": "Number", "default_help_text": "Enter a numeric value", "default_validations": { "required": false } } },
+    { "model": "forms.fieldtype", "pk": 63, "fields": { "key": "Binary Field", "description": "Generic binary input", "default_label": "Binary", "default_help_text": "Enter binary data", "default_validations": { "required": false } } },
+    { "model": "forms.fieldtype", "pk": 64, "fields": { "key": "JSON Field", "description": "Generic JSON input", "default_label": "JSON", "default_help_text": "Enter JSON data", "default_validations": { "required": false } } },
+    { "model": "forms.fieldtype", "pk": 65, "fields": { "key": "Slug Field", "description": "URL-friendly short text", "default_label": "Slug", "default_help_text": "Enter slug (a-z, 0-9, -)", "default_validations": { "required": false, "regex": "^[a-z0-9-]+$" } } },
+    { "model": "forms.fieldtype", "pk": 66, "fields": { "key": "IP Address", "description": "IPv4 or IPv6 address", "default_label": "IP Address", "default_help_text": "Enter valid IP address", "default_validations": { "required": false, "regex": "^([0-9]{1,3}\\.){3}[0-9]{1,3}$" } } }
 ]

@@ -4,13 +4,9 @@
         "pk": 1,
         "fields": {
             "form": 1,
-            "preset": 1,
             "order": 1,
             "conditional_logic": {},
-            "field_type": null,
-            "label": "",
-            "help_text": "",
-            "validations": {}
+            "field_type": 1
         }
     },
     {
@@ -18,13 +14,9 @@
         "pk": 2,
         "fields": {
             "form": 1,
-            "preset": 6,
             "order": 2,
             "conditional_logic": {},
-            "field_type": null,
-            "label": "",
-            "help_text": "",
-            "validations": {}
+            "field_type": 2
         }
     },
     {
@@ -32,13 +24,9 @@
         "pk": 3,
         "fields": {
             "form": 1,
-            "preset": 8,
-            "order": 2,
+            "order": 3,
             "conditional_logic": {},
-            "field_type": null,
-            "label": "",
-            "help_text": "",
-            "validations": {}
+            "field_type": 3
         }
     },
     {
@@ -46,10 +34,678 @@
         "pk": 4,
         "fields": {
             "form": 1,
-            "preset": 11,
+            "order": 4,
+            "conditional_logic": {},
+            "field_type": 4
+        }
+    },
+    {
+        "model": "forms.formfield",
+        "pk": 5,
+        "fields": {
+            "form": 1,
+            "order": 5,
+            "conditional_logic": {},
+            "field_type": 5
+        }
+    },
+    {
+        "model": "forms.formfield",
+        "pk": 6,
+        "fields": {
+            "form": 1,
+            "order": 6,
+            "conditional_logic": {},
+            "field_type": 6
+        }
+    },
+    {
+        "model": "forms.formfield",
+        "pk": 7,
+        "fields": {
+            "form": 1,
+            "order": 7,
+            "conditional_logic": {},
+            "field_type": 7
+        }
+    },
+    {
+        "model": "forms.formfield",
+        "pk": 8,
+        "fields": {
+            "form": 1,
+            "order": 8,
+            "conditional_logic": {},
+            "field_type": 8
+        }
+    },
+    {
+        "model": "forms.formfield",
+        "pk": 9,
+        "fields": {
+            "form": 1,
+            "order": 9,
+            "conditional_logic": {},
+            "field_type": 9
+        }
+    },
+    {
+        "model": "forms.formfield",
+        "pk": 10,
+        "fields": {
+            "form": 1,
+            "order": 10,
+            "conditional_logic": {},
+            "field_type": 10
+        }
+    },
+    {
+        "model": "forms.formfield",
+        "pk": 11,
+        "fields": {
+            "form": 1,
+            "order": 11,
+            "conditional_logic": {},
+            "field_type": 11
+        }
+    },
+    {
+        "model": "forms.formfield",
+        "pk": 12,
+        "fields": {
+            "form": 1,
+            "order": 12,
+            "conditional_logic": {},
+            "field_type": 12
+        }
+    },
+    {
+        "model": "forms.formfield",
+        "pk": 13,
+        "fields": {
+            "form": 1,
+            "order": 13,
+            "conditional_logic": {},
+            "field_type": 13
+        }
+    },
+    {
+        "model": "forms.formfield",
+        "pk": 14,
+        "fields": {
+            "form": 1,
+            "order": 14,
+            "conditional_logic": {},
+            "field_type": 14
+        }
+    },
+    {
+        "model": "forms.formfield",
+        "pk": 15,
+        "fields": {
+            "form": 1,
+            "order": 15,
+            "conditional_logic": {},
+            "field_type": 15
+        }
+    },
+    {
+        "model": "forms.formfield",
+        "pk": 16,
+        "fields": {
+            "form": 1,
+            "order": 16,
+            "conditional_logic": {},
+            "field_type": 16
+        }
+    },
+    {
+        "model": "forms.formfield",
+        "pk": 17,
+        "fields": {
+            "form": 1,
+            "order": 17,
+            "conditional_logic": {},
+            "field_type": 17
+        }
+    },
+    {
+        "model": "forms.formfield",
+        "pk": 18,
+        "fields": {
+            "form": 1,
+            "order": 18,
+            "conditional_logic": {},
+            "field_type": 18
+        }
+    },
+    {
+        "model": "forms.formfield",
+        "pk": 19,
+        "fields": {
+            "form": 1,
+            "order": 19,
+            "conditional_logic": {},
+            "field_type": 19
+        }
+    },
+    {
+        "model": "forms.formfield",
+        "pk": 20,
+        "fields": {
+            "form": 1,
+            "order": 20,
+            "conditional_logic": {},
+            "field_type": 20
+        }
+    },
+    {
+        "model": "forms.formfield",
+        "pk": 21,
+        "fields": {
+            "form": 1,
+            "order": 21,
+            "conditional_logic": {},
+            "field_type": 21
+        }
+    },
+    {
+        "model": "forms.formfield",
+        "pk": 22,
+        "fields": {
+            "form": 1,
+            "order": 22,
+            "conditional_logic": {},
+            "field_type": 22
+        }
+    },
+    {
+        "model": "forms.formfield",
+        "pk": 23,
+        "fields": {
+            "form": 1,
+            "order": 23,
+            "conditional_logic": {},
+            "field_type": 23
+        }
+    },
+    {
+        "model": "forms.formfield",
+        "pk": 24,
+        "fields": {
+            "form": 1,
+            "order": 24,
+            "conditional_logic": {},
+            "field_type": 24
+        }
+    },
+    {
+        "model": "forms.formfield",
+        "pk": 25,
+        "fields": {
+            "form": 1,
+            "order": 25,
+            "conditional_logic": {},
+            "field_type": 25
+        }
+    },
+    {
+        "model": "forms.formfield",
+        "pk": 26,
+        "fields": {
+            "form": 1,
+            "order": 26,
+            "conditional_logic": {},
+            "field_type": 26
+        }
+    },
+    {
+        "model": "forms.formfield",
+        "pk": 27,
+        "fields": {
+            "form": 1,
+            "order": 27,
+            "conditional_logic": {},
+            "field_type": 27
+        }
+    },
+    {
+        "model": "forms.formfield",
+        "pk": 28,
+        "fields": {
+            "form": 1,
+            "order": 28,
+            "conditional_logic": {},
+            "field_type": 28
+        }
+    },
+    {
+        "model": "forms.formfield",
+        "pk": 29,
+        "fields": {
+            "form": 1,
+            "order": 29,
+            "conditional_logic": {},
+            "field_type": 29
+        }
+    },
+    {
+        "model": "forms.formfield",
+        "pk": 30,
+        "fields": {
+            "form": 1,
+            "order": 30,
+            "conditional_logic": {},
+            "field_type": 30
+        }
+    },
+    {
+        "model": "forms.formfield",
+        "pk": 31,
+        "fields": {
+            "form": 1,
+            "order": 31,
+            "conditional_logic": {},
+            "field_type": 31
+        }
+    },
+    {
+        "model": "forms.formfield",
+        "pk": 32,
+        "fields": {
+            "form": 1,
+            "order": 32,
+            "conditional_logic": {},
+            "field_type": 32
+        }
+    },
+    {
+        "model": "forms.formfield",
+        "pk": 33,
+        "fields": {
+            "form": 1,
+            "order": 33,
+            "conditional_logic": {},
+            "field_type": 33
+        }
+    },
+    {
+        "model": "forms.formfield",
+        "pk": 34,
+        "fields": {
+            "form": 1,
+            "order": 34,
+            "conditional_logic": {},
+            "field_type": 34
+        }
+    },
+    {
+        "model": "forms.formfield",
+        "pk": 35,
+        "fields": {
+            "form": 1,
+            "order": 35,
+            "conditional_logic": {},
+            "field_type": 35
+        }
+    },
+    {
+        "model": "forms.formfield",
+        "pk": 36,
+        "fields": {
+            "form": 1,
+            "order": 36,
+            "conditional_logic": {},
+            "field_type": 36
+        }
+    },
+    {
+        "model": "forms.formfield",
+        "pk": 37,
+        "fields": {
+            "form": 1,
+            "order": 37,
+            "conditional_logic": {},
+            "field_type": 37
+        }
+    },
+    {
+        "model": "forms.formfield",
+        "pk": 38,
+        "fields": {
+            "form": 1,
+            "order": 38,
+            "conditional_logic": {},
+            "field_type": 38
+        }
+    },
+    {
+        "model": "forms.formfield",
+        "pk": 39,
+        "fields": {
+            "form": 1,
+            "order": 39,
+            "conditional_logic": {},
+            "field_type": 39
+        }
+    },
+    {
+        "model": "forms.formfield",
+        "pk": 40,
+        "fields": {
+            "form": 1,
+            "order": 40,
+            "conditional_logic": {},
+            "field_type": 40
+        }
+    },
+    {
+        "model": "forms.formfield",
+        "pk": 41,
+        "fields": {
+            "form": 1,
+            "order": 41,
+            "conditional_logic": {},
+            "field_type": 41
+        }
+    },
+    {
+        "model": "forms.formfield",
+        "pk": 42,
+        "fields": {
+            "form": 1,
+            "order": 42,
+            "conditional_logic": {},
+            "field_type": 42
+        }
+    },
+    {
+        "model": "forms.formfield",
+        "pk": 43,
+        "fields": {
+            "form": 1,
+            "order": 43,
+            "conditional_logic": {},
+            "field_type": 43
+        }
+    },
+    {
+        "model": "forms.formfield",
+        "pk": 44,
+        "fields": {
+            "form": 1,
+            "order": 44,
+            "conditional_logic": {},
+            "field_type": 44
+        }
+    },
+    {
+        "model": "forms.formfield",
+        "pk": 45,
+        "fields": {
+            "form": 1,
+            "order": 45,
+            "conditional_logic": {},
+            "field_type": 45
+        }
+    },
+    {
+        "model": "forms.formfield",
+        "pk": 46,
+        "fields": {
+            "form": 1,
+            "order": 46,
+            "conditional_logic": {},
+            "field_type": 46
+        }
+    },
+    {
+        "model": "forms.formfield",
+        "pk": 47,
+        "fields": {
+            "form": 1,
+            "order": 47,
+            "conditional_logic": {},
+            "field_type": 47
+        }
+    },
+    {
+        "model": "forms.formfield",
+        "pk": 48,
+        "fields": {
+            "form": 1,
+            "order": 48,
+            "conditional_logic": {},
+            "field_type": 48
+        }
+    },
+    {
+        "model": "forms.formfield",
+        "pk": 49,
+        "fields": {
+            "form": 1,
+            "order": 49,
+            "conditional_logic": {},
+            "field_type": 49
+        }
+    },
+    {
+        "model": "forms.formfield",
+        "pk": 50,
+        "fields": {
+            "form": 1,
+            "order": 50,
+            "conditional_logic": {},
+            "field_type": 50
+        }
+    },
+    {
+        "model": "forms.formfield",
+        "pk": 51,
+        "fields": {
+            "form": 1,
+            "order": 51,
+            "conditional_logic": {},
+            "field_type": 51
+        }
+    },
+    {
+        "model": "forms.formfield",
+        "pk": 52,
+        "fields": {
+            "form": 1,
+            "order": 52,
+            "conditional_logic": {},
+            "field_type": 52
+        }
+    },
+    {
+        "model": "forms.formfield",
+        "pk": 53,
+        "fields": {
+            "form": 1,
+            "order": 53,
+            "conditional_logic": {},
+            "field_type": 53
+        }
+    },
+    {
+        "model": "forms.formfield",
+        "pk": 54,
+        "fields": {
+            "form": 1,
+            "order": 54,
+            "conditional_logic": {},
+            "field_type": 54
+        }
+    },
+    {
+        "model": "forms.formfield",
+        "pk": 55,
+        "fields": {
+            "form": 1,
+            "order": 55,
+            "conditional_logic": {},
+            "field_type": 55
+        }
+    },
+    {
+        "model": "forms.formfield",
+        "pk": 56,
+        "fields": {
+            "form": 1,
+            "order": 56,
+            "conditional_logic": {},
+            "field_type": 56
+        }
+    },
+    {
+        "model": "forms.formfield",
+        "pk": 57,
+        "fields": {
+            "form": 1,
+            "order": 57,
+            "conditional_logic": {},
+            "field_type": 57
+        }
+    },
+    {
+        "model": "forms.formfield",
+        "pk": 58,
+        "fields": {
+            "form": 1,
+            "order": 58,
+            "conditional_logic": {},
+            "field_type": 58
+        }
+    },
+    {
+        "model": "forms.formfield",
+        "pk": 59,
+        "fields": {
+            "form": 1,
+            "order": 59,
+            "conditional_logic": {},
+            "field_type": 59
+        }
+    },
+    {
+        "model": "forms.formfield",
+        "pk": 60,
+        "fields": {
+            "form": 1,
+            "order": 60,
+            "conditional_logic": {},
+            "field_type": 60
+        }
+    },
+    {
+        "model": "forms.formfield",
+        "pk": 61,
+        "fields": {
+            "form": 1,
+            "order": 61,
+            "conditional_logic": {},
+            "field_type": 61
+        }
+    },
+    {
+        "model": "forms.formfield",
+        "pk": 62,
+        "fields": {
+            "form": 1,
+            "order": 62,
+            "conditional_logic": {},
+            "field_type": 62
+        }
+    },
+    {
+        "model": "forms.formfield",
+        "pk": 63,
+        "fields": {
+            "form": 1,
+            "order": 63,
+            "conditional_logic": {},
+            "field_type": 63
+        }
+    },
+    {
+        "model": "forms.formfield",
+        "pk": 64,
+        "fields": {
+            "form": 1,
+            "order": 64,
+            "conditional_logic": {},
+            "field_type": 64
+        }
+    },
+    {
+        "model": "forms.formfield",
+        "pk": 65,
+        "fields": {
+            "form": 1,
+            "order": 65,
+            "conditional_logic": {},
+            "field_type": 65
+        }
+    },
+    {
+        "model": "forms.formfield",
+        "pk": 66,
+        "fields": {
+            "form": 1,
+            "order": 66,
+            "conditional_logic": {},
+            "field_type": 66
+        }
+    },
+    {
+        "model": "forms.formfield",
+        "pk": 67,
+        "fields": {
+            "form": 2,
+            "order": 1,
+            "conditional_logic": {},
+            "field_type": 26,
+            "label": "",
+            "help_text": "",
+            "validations": {}
+        }
+    },
+    {
+        "model": "forms.formfield",
+        "pk": 68,
+        "fields": {
+            "form": 2,
             "order": 2,
             "conditional_logic": {},
-            "field_type": null,
+            "field_type": 27,
+            "label": "",
+            "help_text": "",
+            "validations": {}
+        }
+    },
+    {
+        "model": "forms.formfield",
+        "pk": 69,
+        "fields": {
+            "form": 2,
+            "order": 3,
+            "conditional_logic": {},
+            "field_type": 30,
+            "label": "",
+            "help_text": "",
+            "validations": {}
+        }
+    },
+    {
+        "model": "forms.formfield",
+        "pk": 70,
+        "fields": {
+            "form": 2,
+            "order": 4,
+            "conditional_logic": {},
+            "field_type": 2,
             "label": "",
             "help_text": "",
             "validations": {}

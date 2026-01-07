@@ -1,0 +1,30 @@
+<div class="">
+    <label class="block text-sm font-medium text-gray-700 dark:text-gray-200">
+        {{object.get_label}}
+    </label>
+
+    <div class="mt-2 flex items-center gap-2">
+        <input type="text" inputmode="numeric" maxlength="3" placeholder="192" class="w-16 rounded-md border border-gray-300 bg-white px-2 py-2 text-center text-sm
+             focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500
+             dark:border-gray-700 dark:bg-gray-900 dark:text-white" />
+        <span class="text-gray-500">.</span>
+        <input type="text" inputmode="numeric" maxlength="3" placeholder="168" class="w-16 rounded-md border border-gray-300 bg-white px-2 py-2 text-center text-sm
+             focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500
+             dark:border-gray-700 dark:bg-gray-900 dark:text-white" />
+        <span class="text-gray-500">.</span>
+        <input type="text" inputmode="numeric" maxlength="3" placeholder="0" class="w-16 rounded-md border border-gray-300 bg-white px-2 py-2 text-center text-sm
+             focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500
+             dark:border-gray-700 dark:bg-gray-900 dark:text-white" />
+        <span class="text-gray-500">.</span>
+        <input type="text" inputmode="numeric" maxlength="3" placeholder="1" class="w-16 rounded-md border border-gray-300 bg-white px-2 py-2 text-center text-sm
+             focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500
+             dark:border-gray-700 dark:bg-gray-900 dark:text-white" />
+    </div>
+
+    <p id="{{object.get_label}}-description" class="mt-2 text-sm text-gray-500 dark:text-gray-400">
+        {{object.get_help_text}}</p>
+    {% if field_has_error %}
+    <p id="{{object.get_label}}-error" class="mt-2 text-sm text-red-600 dark:text-red-400">Not a valid
+        {{object.get_label}}</p>
+    {% endif %}
+</div>
