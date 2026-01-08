@@ -5,6 +5,7 @@ from .views import (
     FormCreateView,
     FormDetailView,
     FormFieldComponentView,
+    FormFieldGroupTemplateView,
     FormFieldTemplateView,
     FormListView,
     FormUpdateView,
@@ -29,5 +30,10 @@ urlpatterns = [
         "components/fields/<int:pk>",
         FormFieldTemplateView.as_view(),
         name="form_field_component",
+    ),
+    path(
+        "components/field_groups/<int:pk>",
+        FormFieldGroupTemplateView.as_view(),
+        name="form_field_group_component",
     ),
 ]

@@ -1,0 +1,10 @@
+<div class="col-span-full border-b border-gray-900/10 pb-12 dark:border-white/10">
+    <h2 class="text-base/7 font-semibold text-gray-900 dark:text-white">{{object.label}}</h2>
+    <p class="mt-1 text-sm/6 text-gray-600 dark:text-gray-400">{{object.description}}</p>
+
+    <div class="mt-8 grid grid-cols-12 gap-x-6 gap-y-8">
+        {% for field_url in object.get_field_urls %}
+        <div hx-get="{{field_url}}" hx-swap="outerHTML" hx-trigger="load"></div>
+        {% endfor %}
+    </div>
+</div>

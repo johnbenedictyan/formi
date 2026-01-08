@@ -6,7 +6,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
     dependencies = [
@@ -15,122 +14,280 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='FieldType',
+            name="FieldType",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('key', models.CharField(max_length=50, unique=True)),
-                ('description', models.CharField(max_length=100)),
-                ('default_label', models.CharField(max_length=100)),
-                ('default_help_text', models.CharField(blank=True, max_length=300)),
-                ('default_validations', models.JSONField(blank=True, default=dict)),
-                ('supports_choices', models.BooleanField(default=False)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("key", models.CharField(max_length=50, unique=True)),
+                ("description", models.CharField(max_length=100)),
+                ("default_label", models.CharField(max_length=100)),
+                ("default_help_text", models.CharField(blank=True, max_length=300)),
+                ("default_validations", models.JSONField(blank=True, default=dict)),
+                ("supports_choices", models.BooleanField(default=False)),
             ],
             options={
-                'verbose_name': 'Field Type',
-                'verbose_name_plural': 'Field Types',
+                "verbose_name": "Field Type",
+                "verbose_name_plural": "Field Types",
             },
         ),
         migrations.CreateModel(
-            name='Form',
+            name="Form",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(max_length=50, verbose_name='title')),
-                ('created_at', models.DateTimeField(auto_now_add=True, verbose_name='created at')),
-                ('expiration_date', models.DateTimeField(verbose_name='expiration date')),
-                ('owner', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL, verbose_name='owner')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("title", models.CharField(max_length=50, verbose_name="title")),
+                (
+                    "created_at",
+                    models.DateTimeField(auto_now_add=True, verbose_name="created at"),
+                ),
+                (
+                    "expiration_date",
+                    models.DateTimeField(verbose_name="expiration date"),
+                ),
+                (
+                    "owner",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to=settings.AUTH_USER_MODEL,
+                        verbose_name="owner",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Form',
-                'verbose_name_plural': 'Forms',
+                "verbose_name": "Form",
+                "verbose_name_plural": "Forms",
             },
         ),
         migrations.CreateModel(
-            name='FormFieldGroup',
+            name="FormFieldGroup",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('key', models.CharField(help_text='machine key e.g. address, billing_address', max_length=50)),
-                ('label', models.CharField(max_length=200)),
-                ('description', models.TextField(blank=True)),
-                ('order', models.PositiveIntegerField()),
-                ('form', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='field_groups', to='forms.form')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "key",
+                    models.CharField(
+                        help_text="machine key e.g. address, billing_address",
+                        max_length=50,
+                    ),
+                ),
+                ("label", models.CharField(max_length=200)),
+                ("description", models.TextField(blank=True)),
+                ("order", models.PositiveIntegerField()),
+                (
+                    "form",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="field_groups",
+                        to="forms.form",
+                    ),
+                ),
             ],
             options={
-                'ordering': ['order'],
-                'unique_together': {('form', 'key')},
+                "ordering": ["order"],
+                "unique_together": {("form", "key")},
             },
         ),
         migrations.CreateModel(
-            name='FormField',
+            name="FormField",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('order', models.PositiveIntegerField()),
-                ('conditional_logic', models.JSONField(blank=True, default=dict)),
-                ('label', models.CharField(blank=True, max_length=200)),
-                ('help_text', models.CharField(blank=True, max_length=300)),
-                ('validations', models.JSONField(blank=True, default=dict)),
-                ('field_type', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.PROTECT, to='forms.fieldtype')),
-                ('form', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='fields', to='forms.form')),
-                ('group', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, related_name='fields', to='forms.formfieldgroup')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("order", models.PositiveIntegerField()),
+                ("conditional_logic", models.JSONField(blank=True, default=dict)),
+                ("label", models.CharField(blank=True, max_length=200)),
+                ("help_text", models.CharField(blank=True, max_length=300)),
+                ("validations", models.JSONField(blank=True, default=dict)),
+                (
+                    "field_type",
+                    models.ForeignKey(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.PROTECT,
+                        to="forms.fieldtype",
+                    ),
+                ),
+                (
+                    "form",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="fields",
+                        to="forms.form",
+                    ),
+                ),
+                (
+                    "group",
+                    models.ForeignKey(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="fields",
+                        to="forms.formfieldgroup",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Form Field',
-                'verbose_name_plural': 'Form Fields',
+                "verbose_name": "Form Field",
+                "verbose_name_plural": "Form Fields",
             },
         ),
         migrations.CreateModel(
-            name='FormResponse',
+            name="FormResponse",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('created_at', models.DateTimeField(auto_now_add=True, verbose_name='created at')),
-                ('form', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='forms.form', verbose_name='form')),
-                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL, verbose_name='user')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "created_at",
+                    models.DateTimeField(auto_now_add=True, verbose_name="created at"),
+                ),
+                (
+                    "form",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="forms.form",
+                        verbose_name="form",
+                    ),
+                ),
+                (
+                    "user",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to=settings.AUTH_USER_MODEL,
+                        verbose_name="user",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Form Response',
-                'verbose_name_plural': 'Form Responses',
+                "verbose_name": "Form Response",
+                "verbose_name_plural": "Form Responses",
             },
         ),
         migrations.CreateModel(
-            name='FormFieldResponse',
+            name="FormFieldResponse",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('value', models.JSONField()),
-                ('created_at', models.DateTimeField(auto_now_add=True, verbose_name='created at')),
-                ('field', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='forms.formfield', verbose_name='form field')),
-                ('response', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='forms.formresponse', verbose_name='form response')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("value", models.JSONField()),
+                (
+                    "created_at",
+                    models.DateTimeField(auto_now_add=True, verbose_name="created at"),
+                ),
+                (
+                    "field",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="forms.formfield",
+                        verbose_name="form field",
+                    ),
+                ),
+                (
+                    "response",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="forms.formresponse",
+                        verbose_name="form response",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Form Field Response',
-                'verbose_name_plural': 'Form Field Responses',
+                "verbose_name": "Form Field Response",
+                "verbose_name_plural": "Form Field Responses",
             },
         ),
         migrations.CreateModel(
-            name='ValidationType',
+            name="ValidationType",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('key', models.CharField(max_length=50, unique=True)),
-                ('label', models.CharField(max_length=100)),
-                ('parameter_schema', models.JSONField()),
-                ('default_error_message', models.CharField(max_length=200)),
-                ('applicable_field_types', models.ManyToManyField(to='forms.fieldtype')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("key", models.CharField(max_length=50, unique=True)),
+                ("label", models.CharField(max_length=100)),
+                ("parameter_schema", models.JSONField()),
+                ("default_error_message", models.CharField(max_length=200)),
+                (
+                    "applicable_field_types",
+                    models.ManyToManyField(to="forms.fieldtype"),
+                ),
             ],
             options={
-                'verbose_name': 'Validation Type',
-                'verbose_name_plural': 'Validation Types',
+                "verbose_name": "Validation Type",
+                "verbose_name_plural": "Validation Types",
             },
         ),
         migrations.CreateModel(
-            name='FieldChoice',
+            name="FieldChoice",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('value', models.CharField(max_length=100)),
-                ('label', models.CharField(max_length=200)),
-                ('order', models.PositiveIntegerField(default=0)),
-                ('field', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='choices', to='forms.formfield')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("value", models.CharField(max_length=100)),
+                ("label", models.CharField(max_length=200)),
+                ("order", models.PositiveIntegerField(default=0)),
+                (
+                    "field",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="choices",
+                        to="forms.formfield",
+                    ),
+                ),
             ],
             options={
-                'ordering': ['order'],
-                'unique_together': {('field', 'value')},
+                "ordering": ["order"],
+                "unique_together": {("field", "value")},
             },
         ),
     ]

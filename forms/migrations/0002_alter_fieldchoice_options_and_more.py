@@ -5,44 +5,67 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('forms', '0001_initial'),
+        ("forms", "0001_initial"),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='fieldchoice',
+            name="fieldchoice",
             options={},
         ),
         migrations.AlterUniqueTogether(
-            name='fieldchoice',
+            name="fieldchoice",
             unique_together=set(),
         ),
         migrations.CreateModel(
-            name='FormFieldChoiceMembership',
+            name="FormFieldChoiceMembership",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('order', models.PositiveIntegerField(default=0)),
-                ('choice', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='forms.fieldchoice')),
-                ('field', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='forms.formfield')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("order", models.PositiveIntegerField(default=0)),
+                (
+                    "choice",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="forms.fieldchoice",
+                    ),
+                ),
+                (
+                    "field",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="forms.formfield",
+                    ),
+                ),
             ],
         ),
         migrations.AddField(
-            model_name='formfield',
-            name='choices',
-            field=models.ManyToManyField(through='forms.FormFieldChoiceMembership', to='forms.fieldchoice'),
+            model_name="formfield",
+            name="choices",
+            field=models.ManyToManyField(
+                through="forms.FormFieldChoiceMembership", to="forms.fieldchoice"
+            ),
         ),
         migrations.RemoveField(
-            model_name='fieldchoice',
-            name='field',
+            model_name="fieldchoice",
+            name="field",
         ),
         migrations.RemoveField(
-            model_name='fieldchoice',
-            name='order',
+            model_name="fieldchoice",
+            name="order",
         ),
         migrations.AddConstraint(
-            model_name='formfieldchoicemembership',
-            constraint=models.UniqueConstraint(fields=('field', 'choice'), name='unique_field_choice'),
+            model_name="formfieldchoicemembership",
+            constraint=models.UniqueConstraint(
+                fields=("field", "choice"), name="unique_field_choice"
+            ),
         ),
     ]

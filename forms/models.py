@@ -1,4 +1,5 @@
 import uuid
+from itertools import chain
 
 from django.conf import settings
 from django.db import models
@@ -23,6 +24,10 @@ class FieldType(models.Model):
         return self.default_label
 
 
+def create_default_order_dict():
+    return {"xs": 1, "sm": 1, "md": 1, "lg": 1, "xl": 1, "2xl": 1}
+
+
 class FormFieldGroup(models.Model):
     form = models.ForeignKey(
         "Form", related_name="field_groups", on_delete=models.CASCADE
@@ -34,20 +39,30 @@ class FormFieldGroup(models.Model):
 
     label = models.CharField(max_length=200)
     description = models.TextField(blank=True)
-
-    order = models.PositiveIntegerField()
+    order = models.JSONField(
+        default=create_default_order_dict,
+        blank=True,
+    )
 
     class Meta:
-        ordering = ["order"]
         unique_together = ("form", "key")
 
     def __str__(self):
         return f"{self.form.title} - {self.label}"
 
+    def get_absolute_url(self):
+        return reverse("form_field_group_component", kwargs={"pk": self.pk})
+
+    def get_field_urls(self):
+        return [x.get_absolute_url() for x in self.fields.all()]
+
+
+def create_default_widths_dict():
+    return {"xs": 12, "sm": 12, "md": 6, "lg": 4, "xl": 3, "2xl": 3}
+
 
 class FormField(models.Model):
     form = models.ForeignKey("Form", related_name="fields", on_delete=models.CASCADE)
-    order = models.PositiveIntegerField()
     conditional_logic = models.JSONField(default=dict, blank=True)
     group = models.ForeignKey(
         "FormFieldGroup",
@@ -64,13 +79,22 @@ class FormField(models.Model):
     label = models.CharField(max_length=200, blank=True)
     help_text = models.CharField(max_length=300, blank=True)
     validations = models.JSONField(default=dict, blank=True)
+    widths = models.JSONField(
+        default=create_default_widths_dict,
+        blank=True,
+    )
+    order = models.JSONField(
+        default=create_default_order_dict,
+        blank=True,
+    )
+    optional = models.BooleanField(default=False, blank=True)
 
     class Meta:
         verbose_name = _("Form Field")
         verbose_name_plural = _("Form Fields")
 
     def __str__(self):
-        return f"{self.form.title} - {self.get_label()} - {self.order}"
+        return f"{self.group or self.form} - {self.get_label()}"
 
     def get_absolute_url(self):
         return reverse("form_field_component", kwargs={"pk": self.pk})
@@ -85,12 +109,12 @@ class FormField(models.Model):
         if not self.field_type.supports_choices:
             return None
         return [(c.value, c.label) for c in self.choices.all()]
-    
+
     def get_template_name(self):
         return f"fields/{self.field_type.key}.html"
-    
+
     def get_value(self):
-        if self.field_type.key == 'submission_id':
+        if self.field_type.key == "submission_id":
             return str(uuid.uuid4())
 
 
@@ -100,13 +124,12 @@ class FieldChoice(models.Model):
 
     def __str__(self):
         return f"{self.label} ({self.value})"
-    
 
 
 class FormFieldChoiceMembership(models.Model):
     field = models.ForeignKey("FormField", on_delete=models.CASCADE)
     choice = models.ForeignKey("FieldChoice", on_delete=models.CASCADE)
-    order = models.PositiveIntegerField(default=0)
+    order = models.PositiveIntegerField(default=1)
 
     class Meta:
         constraints = [
@@ -174,8 +197,13 @@ class Form(models.Model):
     def get_edit_url(self):
         return reverse("form_update", kwargs={"pk": self.pk})
 
-    def get_fields(self):
-        return self.fields.order_by("order")
+    def get_field_urls(self):
+        return [
+            y.get_absolute_url()
+            for y in chain(
+                self.fields.filter(group__isnull=True).all(), self.field_groups.all()
+            )
+        ]
 
 
 class FormResponse(models.Model):

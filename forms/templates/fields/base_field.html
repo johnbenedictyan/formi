@@ -1,0 +1,24 @@
+<div
+    class="col-span-12 sm:col-span-{{object.widths.sm}} md:col-span-{{object.widths.md}} xl:col-span-{{object.widths.xl}} 2xl:col-span-{{object.widths.2xl}} sm:order-{{object.order.sm}} md:order-{{object.order.md}} xl:order-{{object.order.xl}} 2xl:order-{{object.order.2xl}}">
+    <div class="flex justify-between">
+        <label for="{{ object.get_label }}" class="block text-sm/6 font-medium text-gray-900 dark:text-white">
+            {{ object.get_label }}
+        </label>
+
+        {% if object.optional %}
+        <span id="{{ object.get_label }}-optional" class="text-sm/6 text-gray-500 dark:text-gray-400">
+            Optional
+        </span>
+        {% endif %}
+    </div>
+    {% block field %}
+    {% endblock field %}
+    {% if object.get_help_text %}
+    <p id="{{object.get_label}}-description" class="mt-2 text-sm text-gray-500 dark:text-gray-400">
+        {{object.get_help_text}}</p>
+    {% endif %}
+    {% if field_has_error %}
+    <p id="{{object.get_label}}-error" class="mt-2 text-sm text-red-600 dark:text-red-400">Not a valid
+        {{object.get_label}} address.</p>
+    {% endif %}
+</div>

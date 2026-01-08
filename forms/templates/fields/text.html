@@ -1,25 +1,6 @@
-<div class="col-span-full">
-  <div class="flex justify-between">
-    <label for="{{ object.get_label }}" class="block text-sm/6 font-medium text-gray-900 dark:text-white">
-      {{ object.get_label }}
-    </label>
-
-    {% if field_is_optional %}
-    <span id="{{ object.get_label }}-optional" class="text-sm/6 text-gray-500 dark:text-gray-400">
-      Optional
-    </span>
-    {% endif %}
-  </div>
-  <div class="mt-2">
-    <textarea id="{{object.get_label}}" name="{{object.get_label}}" rows="6"
-      class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6 dark:bg-white/5 dark:text-white dark:outline-white/10 dark:placeholder:text-gray-500 dark:focus:outline-indigo-500"></textarea>
-  </div>
-  {% if object.get_help_text %}
-  <p id="{{object.get_label}}-description" class="mt-2 text-sm text-gray-500 dark:text-gray-400">
-    {{object.get_help_text}}</p>
-  {% endif %}
-  {% if field_has_error %}
-  <p id="{{object.get_label}}-error" class="mt-2 text-sm text-red-600 dark:text-red-400">Not a valid
-    {{object.get_label}} address.</p>
-  {% endif %}
+{% extends 'fields/base_field.html' %}{% block field %}
+<div class="mt-2">
+  <textarea id="{{object.get_label}}" name="{{object.get_label}}" rows="6"
+    class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6 dark:bg-white/5 dark:text-white dark:outline-white/10 dark:placeholder:text-gray-500 dark:focus:outline-indigo-500"></textarea>
 </div>
+{% endblock field %}

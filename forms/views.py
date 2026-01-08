@@ -12,7 +12,7 @@ from django.views.generic import (
 )
 
 from .forms import FormForm
-from .models import Form, FormField
+from .models import Form, FormField, FormFieldGroup
 
 
 # Create your views here.
@@ -48,12 +48,6 @@ class FormFieldComponentView(TemplateView):
 class FormCreatePresetView(RedirectView):
     url = reverse_lazy("Form_list")
 
-    def get(self, request, *args, **kwargs):
-        preset = self.kwargs["preset"]
-        print(preset)
-
-        return super().get(request, *args, **kwargs)
-
 
 @method_decorator(csrf_exempt, name="dispatch")
 class FormFieldTemplateView(DetailView):
@@ -64,3 +58,9 @@ class FormFieldTemplateView(DetailView):
 
     def get_context_data(self, **kwargs):
         return super().get_context_data(**kwargs)
+
+
+@method_decorator(csrf_exempt, name="dispatch")
+class FormFieldGroupTemplateView(DetailView):
+    model = FormFieldGroup
+    template_name = "form_field_group.html"
