@@ -4,15 +4,17 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('forms', '0004_remove_formfield_widths'),
+        ("forms", "0004_remove_formfield_widths"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='formfield',
-            name='widths',
-            field=models.JSONField(blank=True, default={'2xl': 3, 'lg': 4, 'md': 6, 'sm': 12, 'xl': 3, 'xs': 12}),
+            model_name="formfield",
+            name="widths",
+            field=models.JSONField(
+                blank=True,
+                default={"2xl": 3, "lg": 4, "md": 6, "sm": 12, "xl": 3, "xs": 12},
+            ),
         ),
     ]

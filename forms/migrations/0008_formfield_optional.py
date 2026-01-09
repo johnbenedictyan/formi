@@ -4,15 +4,14 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('forms', '0007_formfield_order_formfieldgroup_order'),
+        ("forms", "0007_formfield_order_formfieldgroup_order"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='formfield',
-            name='optional',
+            model_name="formfield",
+            name="optional",
             field=models.BooleanField(blank=True, default=False),
         ),
     ]

@@ -4,14 +4,13 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('forms', '0003_formfield_widths'),
+        ("forms", "0003_formfield_widths"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='formfield',
-            name='widths',
+            model_name="formfield",
+            name="widths",
         ),
     ]
