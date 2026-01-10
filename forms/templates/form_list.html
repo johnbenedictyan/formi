@@ -1,78 +1,167 @@
 {% extends "base.html" %} {% block main %}
-<div class="mx-auto max-w-7xl pt-10 pb-24 sm:pb-32 lg:px-8 lg:py-40">
-  <div class="sm:flex sm:items-center">
-    <div class="sm:flex-auto">
-      <h1 class="text-base font-semibold text-gray-900 dark:text-white">
-        Formis
-      </h1>
-      <p class="mt-2 text-sm text-gray-700 dark:text-gray-300">
-        A list of all the users in your account including their name, title,
-        email and role.
-      </p>
-    </div>
-    <div class="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
-      <button type="button"
-        class="block rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:focus-visible:outline-indigo-500 hover:cursor-pointer"
-        command="show-modal" commandfor="create-new-formi-dialog">
-        Create New Formi
-      </button>
-    </div>
+<div class="lg:flex lg:items-center lg:justify-between">
+  <div class="min-w-0 flex-1">
+    <nav aria-label="Breadcrumb" class="flex">
+      <ol role="list" class="flex items-center space-x-4">
+        <li>
+          <div class="flex">
+            <a href="{% url 'home' %}"
+              class="text-sm font-medium text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300">Home</a>
+          </div>
+        </li>
+        <li>
+          <div class="flex items-center">
+            <svg viewBox="0 0 20 20" fill="currentColor" data-slot="icon" aria-hidden="true"
+              class="size-5 shrink-0 text-gray-400 dark:text-gray-500">
+              <path
+                d="M8.22 5.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L11.94 10 8.22 6.28a.75.75 0 0 1 0-1.06Z"
+                clip-rule="evenodd" fill-rule="evenodd" />
+            </svg>
+            <a href="{% url 'form_list' %}"
+              class="ml-4 text-sm font-medium text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300">Forms</a>
+          </div>
+        </li>
+      </ol>
+    </nav>
+    <h2 class="mt-2 text-2xl/7 font-bold text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight dark:text-white">
+      Forms
+    </h2>
+    <!-- <div class="mt-1 flex flex-col sm:mt-0 sm:flex-row sm:flex-wrap sm:space-x-6">
+      {% if object.active %}
+      <div class="mt-2 flex items-center text-sm text-gray-500 dark:text-gray-400">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+          class="mr-1.5 size-5 shrink-0 text-green-400 dark:text-green-500">
+          <path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" />
+          <path fill-rule="evenodd"
+            d="M1.323 11.447C2.811 6.976 7.028 3.75 12.001 3.75c4.97 0 9.185 3.223 10.675 7.69.12.362.12.752 0 1.113-1.487 4.471-5.705 7.697-10.677 7.697-4.97 0-9.186-3.223-10.675-7.69a1.762 1.762 0 0 1 0-1.113ZM17.25 12a5.25 5.25 0 1 1-10.5 0 5.25 5.25 0 0 1 10.5 0Z"
+            clip-rule="evenodd" />
+        </svg>
+
+        Active
+      </div>
+      {% else %}
+      <div class="mt-2 flex items-center text-sm text-gray-500 dark:text-gray-400">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+          class="mr-1.5 size-5 shrink-0 text-gray-400 dark:text-gray-500">
+          <path
+            d="M3.53 2.47a.75.75 0 0 0-1.06 1.06l18 18a.75.75 0 1 0 1.06-1.06l-18-18ZM22.676 12.553a11.249 11.249 0 0 1-2.631 4.31l-3.099-3.099a5.25 5.25 0 0 0-6.71-6.71L7.759 4.577a11.217 11.217 0 0 1 4.242-.827c4.97 0 9.185 3.223 10.675 7.69.12.362.12.752 0 1.113Z" />
+          <path
+            d="M15.75 12c0 .18-.013.357-.037.53l-4.244-4.243A3.75 3.75 0 0 1 15.75 12ZM12.53 15.713l-4.243-4.244a3.75 3.75 0 0 0 4.244 4.243Z" />
+          <path
+            d="M6.75 12c0-.619.107-1.213.304-1.764l-3.1-3.1a11.25 11.25 0 0 0-2.63 4.31c-.12.362-.12.752 0 1.114 1.489 4.467 5.704 7.69 10.675 7.69 1.5 0 2.933-.294 4.242-.827l-2.477-2.477A5.25 5.25 0 0 1 6.75 12Z" />
+        </svg>
+
+        Hidden
+      </div>
+      {% endif %}
+      <div class="mt-2 flex items-center text-sm text-gray-500 dark:text-gray-400">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+          class="mr-1.5 size-5 shrink-0 text-gray-400 dark:text-gray-500">
+          <path
+            d="M4.5 6.375a4.125 4.125 0 1 1 8.25 0 4.125 4.125 0 0 1-8.25 0ZM14.25 8.625a3.375 3.375 0 1 1 6.75 0 3.375 3.375 0 0 1-6.75 0ZM1.5 19.125a7.125 7.125 0 0 1 14.25 0v.003l-.001.119a.75.75 0 0 1-.363.63 13.067 13.067 0 0 1-6.761 1.873c-2.472 0-4.786-.684-6.76-1.873a.75.75 0 0 1-.364-.63l-.001-.122ZM17.25 19.128l-.001.144a2.25 2.25 0 0 1-.233.96 10.088 10.088 0 0 0 5.06-1.01.75.75 0 0 0 .42-.643 4.875 4.875 0 0 0-6.957-4.611 8.586 8.586 0 0 1 1.71 5.157v.003Z" />
+        </svg>
+
+        3 Responses
+      </div>
+      <div class="mt-2 flex items-center text-sm text-gray-500 dark:text-gray-400">
+        <svg viewBox="0 0 20 20" fill="currentColor" data-slot="icon" aria-hidden="true"
+          class="mr-1.5 size-5 shrink-0 text-gray-400 dark:text-gray-500">
+          <path
+            d="M5.75 2a.75.75 0 0 1 .75.75V4h7V2.75a.75.75 0 0 1 1.5 0V4h.25A2.75 2.75 0 0 1 18 6.75v8.5A2.75 2.75 0 0 1 15.25 18H4.75A2.75 2.75 0 0 1 2 15.25v-8.5A2.75 2.75 0 0 1 4.75 4H5V2.75A.75.75 0 0 1 5.75 2Zm-1 5.5c-.69 0-1.25.56-1.25 1.25v6.5c0 .69.56 1.25 1.25 1.25h10.5c.69 0 1.25-.56 1.25-1.25v-6.5c0-.69-.56-1.25-1.25-1.25H4.75Z"
+            clip-rule="evenodd" fill-rule="evenodd" />
+        </svg>
+        Expires on {{object.expiration_date|date}}
+      </div>
+    </div> -->
   </div>
-  <div class="mt-8 flow-root">
-    <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-      <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
+
+  <div class="mt-5 flex lg:mt-0 lg:ml-4">
+    <span class="sm:ml-3">
+      <button type="button"
+        class="cursor-pointer inline-flex items-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 dark:bg-indigo-500 dark:shadow-none dark:hover:bg-indigo-400 dark:focus-visible:outline-indigo-500"
+        command="show-modal" commandfor="create-new-formi-dialog">
+        <!-- <svg viewBox="0 0 20 20" fill="currentColor" data-slot="icon" aria-hidden="true" class="mr-1.5 -ml-0.5 size-5">
+          <path
+            d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z"
+            clip-rule="evenodd" fill-rule="evenodd" />
+        </svg> -->
+        Create New Form
+      </button>
+    </span>
+
+    <!-- Dropdown -->
+    <!-- <el-dropdown class="relative ml-3 sm:hidden">
+      <button
+        class="inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-xs inset-ring inset-ring-gray-300 hover:bg-gray-50 dark:bg-white/10 dark:text-white dark:shadow-none dark:inset-ring-white/5 dark:hover:bg-white/20">
+        More
+        <svg viewBox="0 0 20 20" fill="currentColor" data-slot="icon" aria-hidden="true"
+          class="-mr-1 ml-1.5 size-5 text-gray-400 dark:text-white">
+          <path
+            d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z"
+            clip-rule="evenodd" fill-rule="evenodd" />
+        </svg>
+      </button>
+
+      <el-menu anchor="bottom start" popover
+        class="-mr-1 w-24 origin-top-right rounded-md bg-white py-1 shadow-lg outline-1 outline-black/5 transition transition-discrete [--anchor-gap:--spacing(2)] data-closed:scale-95 data-closed:transform data-closed:opacity-0 data-enter:duration-200 data-enter:ease-out data-leave:duration-75 data-leave:ease-in dark:bg-gray-800 dark:shadow-none dark:-outline-offset-1 dark:outline-white/10">
+        <a href="#"
+          class="block px-4 py-2 text-sm text-gray-700 focus:bg-gray-100 focus:outline-hidden dark:text-gray-300 dark:focus:bg-white/5">Edit</a>
+        <a href="#"
+          class="block px-4 py-2 text-sm text-gray-700 focus:bg-gray-100 focus:outline-hidden dark:text-gray-300 dark:focus:bg-white/5">View</a>
+        <a href="#"
+          class="block px-4 py-2 text-sm text-gray-700 focus:bg-gray-100 focus:outline-hidden dark:text-gray-300 dark:focus:bg-white/5">Share</a>
+      </el-menu>
+    </el-dropdown> -->
+  </div>
+</div>
+
+<div class="mt-8 flow-root">
+  <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+    <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
+      <div
+        class="overflow-hidden shadow-sm outline-1 outline-black/5 sm:rounded-lg dark:shadow-none dark:-outline-offset-1 dark:outline-white/10">
         <table class="relative min-w-full divide-y divide-gray-300 dark:divide-white/15">
-          <thead>
+          <thead class="bg-gray-50 dark:bg-gray-800/75">
             <tr>
               <th scope="col"
-                class="py-3.5 pr-3 pl-4 text-left text-sm font-semibold text-gray-900 sm:pl-0 dark:text-white">
-                Title
-              </th>
-              <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 dark:text-white">
-                Expiration Date
-              </th>
-              <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 dark:text-white">
-                Responses
-              </th>
-              <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 dark:text-white">
-                Created At
-              </th>
-              <th scope="col" class="py-3.5 pr-4 pl-3 sm:pr-0">
-                <span class="sr-only">View</span>
+                class="py-3.5 pr-3 pl-4 text-left text-sm font-semibold text-gray-900 sm:pl-6 dark:text-gray-200">
+                Title</th>
+              <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 dark:text-gray-200">
+                Responses</th>
+              <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 dark:text-gray-200">
+                Expiration Date</th>
+              <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 dark:text-gray-200">
+                Role</th>
+              <th scope="col" class="py-3.5 pr-4 pl-3 sm:pr-6">
                 <span class="sr-only">Edit</span>
               </th>
             </tr>
           </thead>
-          <tbody class="divide-y divide-gray-200 dark:divide-white/10">
+          <tbody class="divide-y divide-gray-200 bg-white dark:divide-white/10 dark:bg-gray-800/50">
             {% for form in object_list %}
             <tr>
-              <td class="py-4 pr-3 pl-4 text-sm font-medium whitespace-nowrap text-gray-900 sm:pl-0 dark:text-white">
+              <td class="py-4 pr-3 pl-4 text-sm font-medium whitespace-nowrap text-gray-900 sm:pl-6 dark:text-white">
                 {{form.title}}
               </td>
               <td class="px-3 py-4 text-sm whitespace-nowrap text-gray-500 dark:text-gray-400">
-                {{form.expiration_date}}
+                0 Responses
               </td>
               <td class="px-3 py-4 text-sm whitespace-nowrap text-gray-500 dark:text-gray-400">
-
+                {{form.expiration_date|date}}
               </td>
               <td class="px-3 py-4 text-sm whitespace-nowrap text-gray-500 dark:text-gray-400">
-                {{form.created_at}}
+                Member
               </td>
-              <td class="py-4 pr-4 pl-3 text-right text-sm font-medium whitespace-nowrap sm:pr-0 flex">
-                <button
-                  class="text-indigo-600 hover:text-indigo-900 dark:text-indigo-400 dark:hover:text-indigo-300 pr-3 hover:cursor-pointer">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                    stroke="currentColor" class="size-4">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                      d="M7.217 10.907a2.25 2.25 0 1 0 0 2.186m0-2.186c.18.324.283.696.283 1.093s-.103.77-.283 1.093m0-2.186 9.566-5.314m-9.566 7.5 9.566 5.314m0 0a2.25 2.25 0 1 0 3.935 2.186 2.25 2.25 0 0 0-3.935-2.186Zm0-12.814a2.25 2.25 0 1 0 3.933-2.185 2.25 2.25 0 0 0-3.933 2.185Z" />
-                  </svg>
-                  <span class="sr-only">, {{form.title}}</span>
-                </button>
-                <a href="{{form.get_absolute_url}}"
-                  class="text-indigo-600 hover:text-indigo-900 dark:text-indigo-400 dark:hover:text-indigo-300 pr-3">View<span
+              <td
+                class="py-4 pr-4 pl-3 text-right text-sm font-medium whitespace-nowrap sm:pr-6 flex justify-end gap-x-4">
+                <a href="{{ form.get_edit_url }}"
+                  class="text-indigo-600 hover:text-indigo-900 dark:text-indigo-400 dark:hover:text-indigo-300">Share<span
                     class="sr-only">, {{form.title}}</span></a>
-                <a href="{{form.get_edit_url}}"
+                <a href="{{ form.get_edit_url }}"
                   class="text-indigo-600 hover:text-indigo-900 dark:text-indigo-400 dark:hover:text-indigo-300">Edit<span
+                    class="sr-only">, {{form.title}}</span></a>
+                <a href="{{ form.get_absolute_url }}"
+                  class="text-indigo-600 hover:text-indigo-900 dark:text-indigo-400 dark:hover:text-indigo-300">View<span
                     class="sr-only">, {{form.title}}</span></a>
               </td>
             </tr>
@@ -82,182 +171,183 @@
       </div>
     </div>
   </div>
-  <el-dialog>
-    <dialog id="create-new-formi-dialog" aria-labelledby="dialog-title"
-      class="fixed inset-0 size-auto max-h-none max-w-none overflow-y-auto bg-transparent backdrop:bg-transparent">
-      <el-dialog-backdrop
-        class="fixed inset-0 bg-gray-500/75 transition-opacity data-closed:opacity-0 data-enter:duration-300 data-enter:ease-out data-leave:duration-200 data-leave:ease-in dark:bg-gray-900/50"></el-dialog-backdrop>
-
-      <div tabindex="0"
-        class="flex min-h-full items-end justify-center p-4 text-center focus:outline-none sm:items-center sm:p-0">
-        <el-dialog-panel
-          class="relative transform overflow-hidden rounded-lg bg-white px-4 pt-5 pb-4 text-left shadow-xl transition-all data-closed:translate-y-4 data-closed:opacity-0 data-enter:duration-300 data-enter:ease-out data-leave:duration-200 data-leave:ease-in sm:my-8 sm:w-full sm:max-w-3xl sm:p-6 data-closed:sm:translate-y-0 data-closed:sm:scale-95 dark:bg-gray-800 dark:outline dark:-outline-offset-1 dark:outline-white/10">
-          <div class="p-8">
-            <h2 class="text-base font-semibold text-gray-900 dark:text-white">
-              New Formi
-            </h2>
-            <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
-              Get started by selecting a template or start from an empty formi.
-            </p>
-            <ul role="list"
-              class="mt-6 grid grid-cols-1 gap-6 border-y border-gray-200 py-6 sm:grid-cols-2 dark:border-white/10">
-              <li class="flow-root">
-                <div
-                  class="relative -m-2 flex items-center space-x-4 rounded-xl p-2 focus-within:outline-2 focus-within:outline-indigo-600 hover:bg-gray-50 dark:focus-within:outline-indigo-500 dark:hover:bg-white/5">
-                  <div class="flex size-16 shrink-0 items-center justify-center rounded-lg bg-pink-500">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" data-slot="icon"
-                      aria-hidden="true" class="size-6 text-white">
-                      <path stroke-linecap="round" stroke-linejoin="round"
-                        d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
-                    </svg>
-                  </div>
-                  <div>
-                    <h3 class="text-sm font-medium text-gray-900 dark:text-white">
-                      <a href="{% url 'form_create_preset' preset='contact' %}" class="focus:outline-hidden">
-                        <span aria-hidden="true" class="absolute inset-0"></span>
-                        <span>Contact Form</span>
-                        <span aria-hidden="true"> &rarr;</span>
-                      </a>
-                    </h3>
-                    <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
-                      A simple starting point for collecting messages, questions, or inquiries.
-                    </p>
-                  </div>
-                </div>
-              </li>
-              <li class="flow-root">
-                <div
-                  class="relative -m-2 flex items-center space-x-4 rounded-xl p-2 focus-within:outline-2 focus-within:outline-indigo-600 hover:bg-gray-50 dark:focus-within:outline-indigo-500 dark:hover:bg-white/5">
-                  <div class="flex size-16 shrink-0 items-center justify-center rounded-lg bg-yellow-500">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" data-slot="icon"
-                      aria-hidden="true" class="size-6 text-white">
-                      <path stroke-linecap="round" stroke-linejoin="round"
-                        d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z" />
-                    </svg>
-                  </div>
-                  <div>
-                    <h3 class="text-sm font-medium text-gray-900 dark:text-white">
-                      <a href="{% url 'form_create_preset' preset='feedback' %}" class="focus:outline-hidden">
-                        <span aria-hidden="true" class="absolute inset-0"></span>
-                        <span>Feedback / Survey</span>
-                        <span aria-hidden="true"> &rarr;</span>
-                      </a>
-                    </h3>
-                    <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
-                      A template for collecting opinions, ratings, and qualitative feedback.
-                    </p>
-                  </div>
-                </div>
-              </li>
-              <li class="flow-root">
-                <div
-                  class="relative -m-2 flex items-center space-x-4 rounded-xl p-2 focus-within:outline-2 focus-within:outline-indigo-600 hover:bg-gray-50 dark:focus-within:outline-indigo-500 dark:hover:bg-white/5">
-                  <div class="flex size-16 shrink-0 items-center justify-center rounded-lg bg-green-500">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" data-slot="icon"
-                      aria-hidden="true" class="size-6 text-white">
-                      <path stroke-linecap="round" stroke-linejoin="round"
-                        d="M18 7.5v3m0 0v3m0-3h3m-3 0h-3m-2.25-4.125a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0ZM3 19.235v-.11a6.375 6.375 0 0 1 12.75 0v.109A12.318 12.318 0 0 1 9.374 21c-2.331 0-4.512-.645-6.374-1.766Z" />
-                    </svg>
-                  </div>
-                  <div>
-                    <h3 class="text-sm font-medium text-gray-900 dark:text-white">
-                      <a href="{% url 'form_create_preset' preset='registration' %}" class="focus:outline-hidden">
-                        <span aria-hidden="true" class="absolute inset-0"></span>
-                        <span>Registration / Signup</span>
-                        <span aria-hidden="true"> &rarr;</span>
-                      </a>
-                    </h3>
-                    <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
-                      A flexible template for capturing participant or attendee details.
-                    </p>
-                  </div>
-                </div>
-              </li>
-              <li class="flow-root">
-                <div
-                  class="relative -m-2 flex items-center space-x-4 rounded-xl p-2 focus-within:outline-2 focus-within:outline-indigo-600 hover:bg-gray-50 dark:focus-within:outline-indigo-500 dark:hover:bg-white/5">
-                  <div class="flex size-16 shrink-0 items-center justify-center rounded-lg bg-blue-500">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" data-slot="icon"
-                      aria-hidden="true" class="size-6 text-white">
-                      <path stroke-linecap="round" stroke-linejoin="round"
-                        d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
-                    </svg>
-                  </div>
-                  <div>
-                    <h3 class="text-sm font-medium text-gray-900 dark:text-white">
-                      <a href="{% url 'form_create_preset' preset='application' %}" class="focus:outline-hidden">
-                        <span aria-hidden="true" class="absolute inset-0"></span>
-                        <span>Application Form</span>
-                        <span aria-hidden="true"> &rarr;</span>
-                      </a>
-                    </h3>
-                    <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
-                      A multi-field template for collecting detailed responses and documents.
-                    </p>
-                  </div>
-                </div>
-              </li>
-              <li class="flow-root">
-                <div
-                  class="relative -m-2 flex items-center space-x-4 rounded-xl p-2 focus-within:outline-2 focus-within:outline-indigo-600 hover:bg-gray-50 dark:focus-within:outline-indigo-500 dark:hover:bg-white/5">
-                  <div class="flex size-16 shrink-0 items-center justify-center rounded-lg bg-indigo-500">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" data-slot="icon"
-                      aria-hidden="true" class="size-6 text-white">
-                      <path stroke-linecap="round" stroke-linejoin="round"
-                        d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z" />
-                    </svg>
-
-                  </div>
-                  <div>
-                    <h3 class="text-sm font-medium text-gray-900 dark:text-white">
-                      <a href="{% url 'form_create_preset' preset='incident' %}" class="focus:outline-hidden">
-                        <span aria-hidden="true" class="absolute inset-0"></span>
-                        <span>Incident / Issue Report</span>
-                        <span aria-hidden="true"> &rarr;</span>
-                      </a>
-                    </h3>
-                    <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
-                      A template for structured reporting of issues, events, or observations.
-                    </p>
-                  </div>
-                </div>
-              </li>
-              <li class="flow-root">
-                <div
-                  class="relative -m-2 flex items-center space-x-4 rounded-xl p-2 focus-within:outline-2 focus-within:outline-indigo-600 hover:bg-gray-50 dark:focus-within:outline-indigo-500 dark:hover:bg-white/5">
-                  <div class="flex size-16 shrink-0 items-center justify-center rounded-lg bg-purple-500">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" data-slot="icon"
-                      aria-hidden="true" class="size-6 text-white">
-                      <path stroke-linecap="round" stroke-linejoin="round"
-                        d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5m-9-6h.008v.008H12v-.008ZM12 15h.008v.008H12V15Zm0 2.25h.008v.008H12v-.008ZM9.75 15h.008v.008H9.75V15Zm0 2.25h.008v.008H9.75v-.008ZM7.5 15h.008v.008H7.5V15Zm0 2.25h.008v.008H7.5v-.008Zm6.75-4.5h.008v.008h-.008v-.008Zm0 2.25h.008v.008h-.008V15Zm0 2.25h.008v.008h-.008v-.008Zm2.25-4.5h.008v.008H16.5v-.008Zm0 2.25h.008v.008H16.5V15Z" />
-                    </svg>
-                  </div>
-                  <div>
-                    <h3 class="text-sm font-medium text-gray-900 dark:text-white">
-                      <a href="{% url 'form_create_preset' preset='appointment' %}" class="focus:outline-hidden">
-                        <span aria-hidden="true" class="absolute inset-0"></span>
-                        <span>Appointment / Booking Form</span>
-                        <span aria-hidden="true"> &rarr;</span>
-                      </a>
-                    </h3>
-                    <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
-                      A starting point for collecting scheduling availability.
-                    </p>
-                  </div>
-                </div>
-              </li>
-            </ul>
-            <div class="mt-4 flex">
-              <a href="{% url 'form_create' %}"
-                class="text-sm font-medium text-indigo-600 hover:text-indigo-500 dark:text-indigo-400 dark:hover:text-indigo-300">
-                Or start from an empty formi
-                <span aria-hidden="true"> &rarr;</span>
-              </a>
-            </div>
-          </div>
-        </el-dialog-panel>
-      </div>
-    </dialog>
-  </el-dialog>
 </div>
+
+<el-dialog>
+  <dialog id="create-new-formi-dialog" aria-labelledby="dialog-title"
+    class="fixed inset-0 size-auto max-h-none max-w-none overflow-y-auto bg-transparent backdrop:bg-transparent">
+    <el-dialog-backdrop
+      class="fixed inset-0 bg-gray-500/75 transition-opacity data-closed:opacity-0 data-enter:duration-300 data-enter:ease-out data-leave:duration-200 data-leave:ease-in dark:bg-gray-900/50"></el-dialog-backdrop>
+
+    <div tabindex="0"
+      class="flex min-h-full items-end justify-center p-4 text-center focus:outline-none sm:items-center sm:p-0">
+      <el-dialog-panel
+        class="relative transform overflow-hidden rounded-lg bg-white px-4 pt-5 pb-4 text-left shadow-xl transition-all data-closed:translate-y-4 data-closed:opacity-0 data-enter:duration-300 data-enter:ease-out data-leave:duration-200 data-leave:ease-in sm:my-8 sm:w-full sm:max-w-3xl sm:p-6 data-closed:sm:translate-y-0 data-closed:sm:scale-95 dark:bg-gray-800 dark:outline dark:-outline-offset-1 dark:outline-white/10">
+        <div class="p-8">
+          <h2 class="text-base font-semibold text-gray-900 dark:text-white">
+            New Formi
+          </h2>
+          <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+            Get started by selecting a template or start from an empty formi.
+          </p>
+          <ul role="list"
+            class="mt-6 grid grid-cols-1 gap-6 border-y border-gray-200 py-6 sm:grid-cols-2 dark:border-white/10">
+            <li class="flow-root">
+              <div
+                class="relative -m-2 flex items-center space-x-4 rounded-xl p-2 focus-within:outline-2 focus-within:outline-indigo-600 hover:bg-gray-50 dark:focus-within:outline-indigo-500 dark:hover:bg-white/5">
+                <div class="flex size-16 shrink-0 items-center justify-center rounded-lg bg-pink-500">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" data-slot="icon"
+                    aria-hidden="true" class="size-6 text-white">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="text-sm font-medium text-gray-900 dark:text-white">
+                    <a href="{% url 'form_create_preset' preset='contact' %}" class="focus:outline-hidden">
+                      <span aria-hidden="true" class="absolute inset-0"></span>
+                      <span>Contact Form</span>
+                      <span aria-hidden="true"> &rarr;</span>
+                    </a>
+                  </h3>
+                  <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+                    A simple starting point for collecting messages, questions, or inquiries.
+                  </p>
+                </div>
+              </div>
+            </li>
+            <li class="flow-root">
+              <div
+                class="relative -m-2 flex items-center space-x-4 rounded-xl p-2 focus-within:outline-2 focus-within:outline-indigo-600 hover:bg-gray-50 dark:focus-within:outline-indigo-500 dark:hover:bg-white/5">
+                <div class="flex size-16 shrink-0 items-center justify-center rounded-lg bg-yellow-500">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" data-slot="icon"
+                    aria-hidden="true" class="size-6 text-white">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="text-sm font-medium text-gray-900 dark:text-white">
+                    <a href="{% url 'form_create_preset' preset='feedback' %}" class="focus:outline-hidden">
+                      <span aria-hidden="true" class="absolute inset-0"></span>
+                      <span>Feedback / Survey</span>
+                      <span aria-hidden="true"> &rarr;</span>
+                    </a>
+                  </h3>
+                  <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+                    A template for collecting opinions, ratings, and qualitative feedback.
+                  </p>
+                </div>
+              </div>
+            </li>
+            <li class="flow-root">
+              <div
+                class="relative -m-2 flex items-center space-x-4 rounded-xl p-2 focus-within:outline-2 focus-within:outline-indigo-600 hover:bg-gray-50 dark:focus-within:outline-indigo-500 dark:hover:bg-white/5">
+                <div class="flex size-16 shrink-0 items-center justify-center rounded-lg bg-green-500">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" data-slot="icon"
+                    aria-hidden="true" class="size-6 text-white">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M18 7.5v3m0 0v3m0-3h3m-3 0h-3m-2.25-4.125a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0ZM3 19.235v-.11a6.375 6.375 0 0 1 12.75 0v.109A12.318 12.318 0 0 1 9.374 21c-2.331 0-4.512-.645-6.374-1.766Z" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="text-sm font-medium text-gray-900 dark:text-white">
+                    <a href="{% url 'form_create_preset' preset='registration' %}" class="focus:outline-hidden">
+                      <span aria-hidden="true" class="absolute inset-0"></span>
+                      <span>Registration / Signup</span>
+                      <span aria-hidden="true"> &rarr;</span>
+                    </a>
+                  </h3>
+                  <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+                    A flexible template for capturing participant or attendee details.
+                  </p>
+                </div>
+              </div>
+            </li>
+            <li class="flow-root">
+              <div
+                class="relative -m-2 flex items-center space-x-4 rounded-xl p-2 focus-within:outline-2 focus-within:outline-indigo-600 hover:bg-gray-50 dark:focus-within:outline-indigo-500 dark:hover:bg-white/5">
+                <div class="flex size-16 shrink-0 items-center justify-center rounded-lg bg-blue-500">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" data-slot="icon"
+                    aria-hidden="true" class="size-6 text-white">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="text-sm font-medium text-gray-900 dark:text-white">
+                    <a href="{% url 'form_create_preset' preset='application' %}" class="focus:outline-hidden">
+                      <span aria-hidden="true" class="absolute inset-0"></span>
+                      <span>Application Form</span>
+                      <span aria-hidden="true"> &rarr;</span>
+                    </a>
+                  </h3>
+                  <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+                    A multi-field template for collecting detailed responses and documents.
+                  </p>
+                </div>
+              </div>
+            </li>
+            <li class="flow-root">
+              <div
+                class="relative -m-2 flex items-center space-x-4 rounded-xl p-2 focus-within:outline-2 focus-within:outline-indigo-600 hover:bg-gray-50 dark:focus-within:outline-indigo-500 dark:hover:bg-white/5">
+                <div class="flex size-16 shrink-0 items-center justify-center rounded-lg bg-indigo-500">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" data-slot="icon"
+                    aria-hidden="true" class="size-6 text-white">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z" />
+                  </svg>
+
+                </div>
+                <div>
+                  <h3 class="text-sm font-medium text-gray-900 dark:text-white">
+                    <a href="{% url 'form_create_preset' preset='incident' %}" class="focus:outline-hidden">
+                      <span aria-hidden="true" class="absolute inset-0"></span>
+                      <span>Incident / Issue Report</span>
+                      <span aria-hidden="true"> &rarr;</span>
+                    </a>
+                  </h3>
+                  <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+                    A template for structured reporting of issues, events, or observations.
+                  </p>
+                </div>
+              </div>
+            </li>
+            <li class="flow-root">
+              <div
+                class="relative -m-2 flex items-center space-x-4 rounded-xl p-2 focus-within:outline-2 focus-within:outline-indigo-600 hover:bg-gray-50 dark:focus-within:outline-indigo-500 dark:hover:bg-white/5">
+                <div class="flex size-16 shrink-0 items-center justify-center rounded-lg bg-purple-500">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" data-slot="icon"
+                    aria-hidden="true" class="size-6 text-white">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5m-9-6h.008v.008H12v-.008ZM12 15h.008v.008H12V15Zm0 2.25h.008v.008H12v-.008ZM9.75 15h.008v.008H9.75V15Zm0 2.25h.008v.008H9.75v-.008ZM7.5 15h.008v.008H7.5V15Zm0 2.25h.008v.008H7.5v-.008Zm6.75-4.5h.008v.008h-.008v-.008Zm0 2.25h.008v.008h-.008V15Zm0 2.25h.008v.008h-.008v-.008Zm2.25-4.5h.008v.008H16.5v-.008Zm0 2.25h.008v.008H16.5V15Z" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="text-sm font-medium text-gray-900 dark:text-white">
+                    <a href="{% url 'form_create_preset' preset='appointment' %}" class="focus:outline-hidden">
+                      <span aria-hidden="true" class="absolute inset-0"></span>
+                      <span>Appointment / Booking Form</span>
+                      <span aria-hidden="true"> &rarr;</span>
+                    </a>
+                  </h3>
+                  <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+                    A starting point for collecting scheduling availability.
+                  </p>
+                </div>
+              </div>
+            </li>
+          </ul>
+          <div class="mt-4 flex">
+            <a href="{% url 'form_create' %}"
+              class="text-sm font-medium text-indigo-600 hover:text-indigo-500 dark:text-indigo-400 dark:hover:text-indigo-300">
+              Or start from an empty formi
+              <span aria-hidden="true"> &rarr;</span>
+            </a>
+          </div>
+        </div>
+      </el-dialog-panel>
+    </div>
+  </dialog>
+</el-dialog>
 {% endblock main %}

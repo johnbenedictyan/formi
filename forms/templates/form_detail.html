@@ -1,300 +1,289 @@
 {% extends "base.html" %} {% block main %}
-<div class="mx-auto max-w-7xl pt-10 pb-24 sm:pb-32 lg:px-8 flex flex-col gap-y-16">
-  <!-- Include this script tag or install `@tailwindplus/elements` via npm: -->
-  <!-- <script src="https://cdn.jsdelivr.net/npm/@tailwindplus/elements@1" type="module"></script> -->
-  <div class="lg:flex lg:items-center lg:justify-between">
-    <div class="min-w-0 flex-1">
-      <nav aria-label="Breadcrumb" class="flex">
-        <ol role="list" class="flex items-center space-x-4">
-          <li>
-            <div class="flex">
-              <a href="{% url 'form_list' %}"
-                class="text-sm font-medium text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300">Forms</a>
-            </div>
-          </li>
-          <li>
-            <div class="flex items-center">
-              <svg viewBox="0 0 20 20" fill="currentColor" data-slot="icon" aria-hidden="true"
-                class="size-5 shrink-0 text-gray-400 dark:text-gray-500">
-                <path
-                  d="M8.22 5.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L11.94 10 8.22 6.28a.75.75 0 0 1 0-1.06Z"
-                  clip-rule="evenodd" fill-rule="evenodd" />
-              </svg>
-              <a href="{{object.get_absolute_url}}"
-                class="ml-4 text-sm font-medium text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300">{{object.title}}</a>
-            </div>
-          </li>
-        </ol>
-      </nav>
-      <h2 class="mt-2 text-2xl/7 font-bold text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight dark:text-white">
-        {{object.title|title}}</h2>
-      <div class="mt-1 flex flex-col sm:mt-0 sm:flex-row sm:flex-wrap sm:space-x-6">
-        {% if object.active %}
-        <div class="mt-2 flex items-center text-sm text-gray-500 dark:text-gray-400">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-            class="mr-1.5 size-5 shrink-0 text-green-400 dark:text-green-500">
-            <path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" />
-            <path fill-rule="evenodd"
-              d="M1.323 11.447C2.811 6.976 7.028 3.75 12.001 3.75c4.97 0 9.185 3.223 10.675 7.69.12.362.12.752 0 1.113-1.487 4.471-5.705 7.697-10.677 7.697-4.97 0-9.186-3.223-10.675-7.69a1.762 1.762 0 0 1 0-1.113ZM17.25 12a5.25 5.25 0 1 1-10.5 0 5.25 5.25 0 0 1 10.5 0Z"
-              clip-rule="evenodd" />
-          </svg>
-
-          Active
-        </div>
-        {% else %}
-        <div class="mt-2 flex items-center text-sm text-gray-500 dark:text-gray-400">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-            class="mr-1.5 size-5 shrink-0 text-gray-400 dark:text-gray-500">
-            <path
-              d="M3.53 2.47a.75.75 0 0 0-1.06 1.06l18 18a.75.75 0 1 0 1.06-1.06l-18-18ZM22.676 12.553a11.249 11.249 0 0 1-2.631 4.31l-3.099-3.099a5.25 5.25 0 0 0-6.71-6.71L7.759 4.577a11.217 11.217 0 0 1 4.242-.827c4.97 0 9.185 3.223 10.675 7.69.12.362.12.752 0 1.113Z" />
-            <path
-              d="M15.75 12c0 .18-.013.357-.037.53l-4.244-4.243A3.75 3.75 0 0 1 15.75 12ZM12.53 15.713l-4.243-4.244a3.75 3.75 0 0 0 4.244 4.243Z" />
-            <path
-              d="M6.75 12c0-.619.107-1.213.304-1.764l-3.1-3.1a11.25 11.25 0 0 0-2.63 4.31c-.12.362-.12.752 0 1.114 1.489 4.467 5.704 7.69 10.675 7.69 1.5 0 2.933-.294 4.242-.827l-2.477-2.477A5.25 5.25 0 0 1 6.75 12Z" />
-          </svg>
-
-          Hidden
-        </div>
-        {% endif %}
-        <div class="mt-2 flex items-center text-sm text-gray-500 dark:text-gray-400">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-            class="mr-1.5 size-5 shrink-0 text-gray-400 dark:text-gray-500">
-            <path
-              d="M4.5 6.375a4.125 4.125 0 1 1 8.25 0 4.125 4.125 0 0 1-8.25 0ZM14.25 8.625a3.375 3.375 0 1 1 6.75 0 3.375 3.375 0 0 1-6.75 0ZM1.5 19.125a7.125 7.125 0 0 1 14.25 0v.003l-.001.119a.75.75 0 0 1-.363.63 13.067 13.067 0 0 1-6.761 1.873c-2.472 0-4.786-.684-6.76-1.873a.75.75 0 0 1-.364-.63l-.001-.122ZM17.25 19.128l-.001.144a2.25 2.25 0 0 1-.233.96 10.088 10.088 0 0 0 5.06-1.01.75.75 0 0 0 .42-.643 4.875 4.875 0 0 0-6.957-4.611 8.586 8.586 0 0 1 1.71 5.157v.003Z" />
-          </svg>
-
-          3 Responses
-        </div>
-        <div class="mt-2 flex items-center text-sm text-gray-500 dark:text-gray-400">
-          <svg viewBox="0 0 20 20" fill="currentColor" data-slot="icon" aria-hidden="true"
-            class="mr-1.5 size-5 shrink-0 text-gray-400 dark:text-gray-500">
-            <path
-              d="M5.75 2a.75.75 0 0 1 .75.75V4h7V2.75a.75.75 0 0 1 1.5 0V4h.25A2.75 2.75 0 0 1 18 6.75v8.5A2.75 2.75 0 0 1 15.25 18H4.75A2.75 2.75 0 0 1 2 15.25v-8.5A2.75 2.75 0 0 1 4.75 4H5V2.75A.75.75 0 0 1 5.75 2Zm-1 5.5c-.69 0-1.25.56-1.25 1.25v6.5c0 .69.56 1.25 1.25 1.25h10.5c.69 0 1.25-.56 1.25-1.25v-6.5c0-.69-.56-1.25-1.25-1.25H4.75Z"
-              clip-rule="evenodd" fill-rule="evenodd" />
-          </svg>
-          Expires on {{object.expiration_date|date}}
-        </div>
-      </div>
-    </div>
-    <div class="mt-5 flex lg:mt-0 lg:ml-4">
-      <span class="hidden sm:block">
-        <button type="button"
-          class="cursor-pointer inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-xs inset-ring inset-ring-gray-300 hover:bg-gray-50 dark:bg-white/10 dark:text-white dark:shadow-none dark:inset-ring-white/5 dark:hover:bg-white/20">
-          <svg viewBox="0 0 20 20" fill="currentColor" data-slot="icon" aria-hidden="true"
-            class="mr-1.5 -ml-0.5 size-5 text-gray-400 dark:text-white">
-            <path
-              d="m2.695 14.762-1.262 3.155a.5.5 0 0 0 .65.65l3.155-1.262a4 4 0 0 0 1.343-.886L17.5 5.501a2.121 2.121 0 0 0-3-3L3.58 13.419a4 4 0 0 0-.885 1.343Z" />
-          </svg>
-          Edit
-        </button>
-      </span>
-
-      <span class="ml-3 hidden sm:block">
-        <button type="button"
-          class="cursor-pointer inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-xs inset-ring inset-ring-gray-300 hover:bg-gray-50 dark:bg-white/10 dark:text-white dark:shadow-none dark:inset-ring-white/5 dark:hover:bg-white/20">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-            stroke="currentColor" class="mr-1.5 -ml-0.5 size-5 text-gray-400 dark:text-white">
-            <path stroke-linecap="round" stroke-linejoin="round"
-              d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
-            <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-          </svg>
-
-          View
-        </button>
-      </span>
-
-      <span class="ml-3 hidden sm:block">
-        <button type="button"
-          class="cursor-pointer inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-xs inset-ring inset-ring-gray-300 hover:bg-gray-50 dark:bg-white/10 dark:text-white dark:shadow-none dark:inset-ring-white/5 dark:hover:bg-white/20">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-            stroke="currentColor" class="mr-1.5 -ml-0.5 size-5 text-gray-400 dark:text-white">
-            <path stroke-linecap="round" stroke-linejoin="round"
-              d="M7.217 10.907a2.25 2.25 0 1 0 0 2.186m0-2.186c.18.324.283.696.283 1.093s-.103.77-.283 1.093m0-2.186 9.566-5.314m-9.566 7.5 9.566 5.314m0 0a2.25 2.25 0 1 0 3.935 2.186 2.25 2.25 0 0 0-3.935-2.186Zm0-12.814a2.25 2.25 0 1 0 3.933-2.185 2.25 2.25 0 0 0-3.933 2.185Z" />
-          </svg>
-
-          Share
-        </button>
-      </span>
-
-      <span class="sm:ml-3">
-        <button type="button"
-          class="cursor-pointer inline-flex items-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 dark:bg-indigo-500 dark:shadow-none dark:hover:bg-indigo-400 dark:focus-visible:outline-indigo-500">
-          <svg viewBox="0 0 20 20" fill="currentColor" data-slot="icon" aria-hidden="true"
-            class="mr-1.5 -ml-0.5 size-5">
-            <path
-              d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z"
-              clip-rule="evenodd" fill-rule="evenodd" />
-          </svg>
-          Publish
-        </button>
-      </span>
-
-      <!-- Dropdown -->
-      <el-dropdown class="relative ml-3 sm:hidden">
-        <button
-          class="inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-xs inset-ring inset-ring-gray-300 hover:bg-gray-50 dark:bg-white/10 dark:text-white dark:shadow-none dark:inset-ring-white/5 dark:hover:bg-white/20">
-          More
-          <svg viewBox="0 0 20 20" fill="currentColor" data-slot="icon" aria-hidden="true"
-            class="-mr-1 ml-1.5 size-5 text-gray-400 dark:text-white">
-            <path
-              d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z"
-              clip-rule="evenodd" fill-rule="evenodd" />
-          </svg>
-        </button>
-
-        <el-menu anchor="bottom start" popover
-          class="-mr-1 w-24 origin-top-right rounded-md bg-white py-1 shadow-lg outline-1 outline-black/5 transition transition-discrete [--anchor-gap:--spacing(2)] data-closed:scale-95 data-closed:transform data-closed:opacity-0 data-enter:duration-200 data-enter:ease-out data-leave:duration-75 data-leave:ease-in dark:bg-gray-800 dark:shadow-none dark:-outline-offset-1 dark:outline-white/10">
-          <a href="#"
-            class="block px-4 py-2 text-sm text-gray-700 focus:bg-gray-100 focus:outline-hidden dark:text-gray-300 dark:focus:bg-white/5">Edit</a>
-          <a href="#"
-            class="block px-4 py-2 text-sm text-gray-700 focus:bg-gray-100 focus:outline-hidden dark:text-gray-300 dark:focus:bg-white/5">View</a>
-          <a href="#"
-            class="block px-4 py-2 text-sm text-gray-700 focus:bg-gray-100 focus:outline-hidden dark:text-gray-300 dark:focus:bg-white/5">Share</a>
-        </el-menu>
-      </el-dropdown>
-    </div>
-  </div>
-
-  <div>
-    <div class="border-b border-gray-200 pb-5 sm:flex sm:items-center dark:border-white/10">
-      <div class="sm:flex-auto">
-        <h1 class="text-base font-semibold text-gray-900 dark:text-white">Responses</h1>
-        <p class="mt-2 text-sm text-gray-700 dark:text-gray-300">A list of all responses</p>
-      </div>
-    </div>
-    <div class="mt-8 flow-root">
-      <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-        <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
-          <div
-            class="overflow-hidden shadow-sm outline-1 outline-black/5 sm:rounded-lg dark:shadow-none dark:-outline-offset-1 dark:outline-white/10">
-            <table class="relative min-w-full divide-y divide-gray-300 dark:divide-white/15">
-              <thead class="bg-gray-50 dark:bg-gray-800/75">
-                <tr>
-                  <th scope="col"
-                    class="py-3.5 pr-3 pl-4 text-left text-sm font-semibold text-gray-900 sm:pl-6 dark:text-gray-200">
-                    Name</th>
-                  <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 dark:text-gray-200">
-                    Title</th>
-                  <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 dark:text-gray-200">
-                    Email</th>
-                  <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 dark:text-gray-200">
-                    Role</th>
-                  <th scope="col" class="py-3.5 pr-4 pl-3 sm:pr-6">
-                    <span class="sr-only">Edit</span>
-                  </th>
-                </tr>
-              </thead>
-              <tbody class="divide-y divide-gray-200 bg-white dark:divide-white/10 dark:bg-gray-800/50">
-                <tr>
-                  <td
-                    class="py-4 pr-3 pl-4 text-sm font-medium whitespace-nowrap text-gray-900 sm:pl-6 dark:text-white">
-                    Lindsay Walton</td>
-                  <td class="px-3 py-4 text-sm whitespace-nowrap text-gray-500 dark:text-gray-400">Front-end Developer
-                  </td>
-                  <td class="px-3 py-4 text-sm whitespace-nowrap text-gray-500 dark:text-gray-400">
-                    lindsay.walton@example.com</td>
-                  <td class="px-3 py-4 text-sm whitespace-nowrap text-gray-500 dark:text-gray-400">Member</td>
-                  <td class="py-4 pr-4 pl-3 text-right text-sm font-medium whitespace-nowrap sm:pr-6">
-                    <a href="#"
-                      class="text-indigo-600 hover:text-indigo-900 dark:text-indigo-400 dark:hover:text-indigo-300">Edit<span
-                        class="sr-only">, Lindsay Walton</span></a>
-                  </td>
-                </tr>
-                <tr>
-                  <td
-                    class="py-4 pr-3 pl-4 text-sm font-medium whitespace-nowrap text-gray-900 sm:pl-6 dark:text-white">
-                    Courtney Henry</td>
-                  <td class="px-3 py-4 text-sm whitespace-nowrap text-gray-500 dark:text-gray-400">Designer</td>
-                  <td class="px-3 py-4 text-sm whitespace-nowrap text-gray-500 dark:text-gray-400">
-                    courtney.henry@example.com</td>
-                  <td class="px-3 py-4 text-sm whitespace-nowrap text-gray-500 dark:text-gray-400">Admin</td>
-                  <td class="py-4 pr-4 pl-3 text-right text-sm font-medium whitespace-nowrap sm:pr-6">
-                    <a href="#"
-                      class="text-indigo-600 hover:text-indigo-900 dark:text-indigo-400 dark:hover:text-indigo-300">Edit<span
-                        class="sr-only">, Courtney Henry</span></a>
-                  </td>
-                </tr>
-                <tr>
-                  <td
-                    class="py-4 pr-3 pl-4 text-sm font-medium whitespace-nowrap text-gray-900 sm:pl-6 dark:text-white">
-                    Tom Cook</td>
-                  <td class="px-3 py-4 text-sm whitespace-nowrap text-gray-500 dark:text-gray-400">Director of Product
-                  </td>
-                  <td class="px-3 py-4 text-sm whitespace-nowrap text-gray-500 dark:text-gray-400">tom.cook@example.com
-                  </td>
-                  <td class="px-3 py-4 text-sm whitespace-nowrap text-gray-500 dark:text-gray-400">Member</td>
-                  <td class="py-4 pr-4 pl-3 text-right text-sm font-medium whitespace-nowrap sm:pr-6">
-                    <a href="#"
-                      class="text-indigo-600 hover:text-indigo-900 dark:text-indigo-400 dark:hover:text-indigo-300">Edit<span
-                        class="sr-only">, Tom Cook</span></a>
-                  </td>
-                </tr>
-                <tr>
-                  <td
-                    class="py-4 pr-3 pl-4 text-sm font-medium whitespace-nowrap text-gray-900 sm:pl-6 dark:text-white">
-                    Whitney Francis</td>
-                  <td class="px-3 py-4 text-sm whitespace-nowrap text-gray-500 dark:text-gray-400">Copywriter</td>
-                  <td class="px-3 py-4 text-sm whitespace-nowrap text-gray-500 dark:text-gray-400">
-                    whitney.francis@example.com</td>
-                  <td class="px-3 py-4 text-sm whitespace-nowrap text-gray-500 dark:text-gray-400">Admin</td>
-                  <td class="py-4 pr-4 pl-3 text-right text-sm font-medium whitespace-nowrap sm:pr-6">
-                    <a href="#"
-                      class="text-indigo-600 hover:text-indigo-900 dark:text-indigo-400 dark:hover:text-indigo-300">Edit<span
-                        class="sr-only">, Whitney Francis</span></a>
-                  </td>
-                </tr>
-                <tr>
-                  <td
-                    class="py-4 pr-3 pl-4 text-sm font-medium whitespace-nowrap text-gray-900 sm:pl-6 dark:text-white">
-                    Leonard Krasner</td>
-                  <td class="px-3 py-4 text-sm whitespace-nowrap text-gray-500 dark:text-gray-400">Senior Designer</td>
-                  <td class="px-3 py-4 text-sm whitespace-nowrap text-gray-500 dark:text-gray-400">
-                    leonard.krasner@example.com</td>
-                  <td class="px-3 py-4 text-sm whitespace-nowrap text-gray-500 dark:text-gray-400">Owner</td>
-                  <td class="py-4 pr-4 pl-3 text-right text-sm font-medium whitespace-nowrap sm:pr-6">
-                    <a href="#"
-                      class="text-indigo-600 hover:text-indigo-900 dark:text-indigo-400 dark:hover:text-indigo-300">Edit<span
-                        class="sr-only">, Leonard Krasner</span></a>
-                  </td>
-                </tr>
-                <tr>
-                  <td
-                    class="py-4 pr-3 pl-4 text-sm font-medium whitespace-nowrap text-gray-900 sm:pl-6 dark:text-white">
-                    Floyd Miles</td>
-                  <td class="px-3 py-4 text-sm whitespace-nowrap text-gray-500 dark:text-gray-400">Principal Designer
-                  </td>
-                  <td class="px-3 py-4 text-sm whitespace-nowrap text-gray-500 dark:text-gray-400">
-                    floyd.miles@example.com</td>
-                  <td class="px-3 py-4 text-sm whitespace-nowrap text-gray-500 dark:text-gray-400">Member</td>
-                  <td class="py-4 pr-4 pl-3 text-right text-sm font-medium whitespace-nowrap sm:pr-6">
-                    <a href="#"
-                      class="text-indigo-600 hover:text-indigo-900 dark:text-indigo-400 dark:hover:text-indigo-300">Edit<span
-                        class="sr-only">, Floyd Miles</span></a>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+<div class="lg:flex lg:items-center lg:justify-between">
+  <div class="min-w-0 flex-1">
+    <nav aria-label="Breadcrumb" class="flex">
+      <ol role="list" class="flex items-center space-x-4">
+        <li>
+          <div class="flex">
+            <a href="{% url 'form_list' %}"
+              class="text-sm font-medium text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300">Forms</a>
           </div>
+        </li>
+        <li>
+          <div class="flex items-center">
+            <svg viewBox="0 0 20 20" fill="currentColor" data-slot="icon" aria-hidden="true"
+              class="size-5 shrink-0 text-gray-400 dark:text-gray-500">
+              <path
+                d="M8.22 5.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L11.94 10 8.22 6.28a.75.75 0 0 1 0-1.06Z"
+                clip-rule="evenodd" fill-rule="evenodd" />
+            </svg>
+            <a href="{{object.get_absolute_url}}"
+              class="ml-4 text-sm font-medium text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300">{{object.title}}</a>
+          </div>
+        </li>
+      </ol>
+    </nav>
+    <h2 class="mt-2 text-2xl/7 font-bold text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight dark:text-white">
+      {{object.title|title}}</h2>
+    <div class="mt-1 flex flex-col sm:mt-0 sm:flex-row sm:flex-wrap sm:space-x-6">
+      {% if object.active %}
+      <div class="mt-2 flex items-center text-sm text-gray-500 dark:text-gray-400">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+          class="mr-1.5 size-5 shrink-0 text-green-400 dark:text-green-500">
+          <path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" />
+          <path fill-rule="evenodd"
+            d="M1.323 11.447C2.811 6.976 7.028 3.75 12.001 3.75c4.97 0 9.185 3.223 10.675 7.69.12.362.12.752 0 1.113-1.487 4.471-5.705 7.697-10.677 7.697-4.97 0-9.186-3.223-10.675-7.69a1.762 1.762 0 0 1 0-1.113ZM17.25 12a5.25 5.25 0 1 1-10.5 0 5.25 5.25 0 0 1 10.5 0Z"
+            clip-rule="evenodd" />
+        </svg>
+
+        Active
+      </div>
+      {% else %}
+      <div class="mt-2 flex items-center text-sm text-gray-500 dark:text-gray-400">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+          class="mr-1.5 size-5 shrink-0 text-gray-400 dark:text-gray-500">
+          <path
+            d="M3.53 2.47a.75.75 0 0 0-1.06 1.06l18 18a.75.75 0 1 0 1.06-1.06l-18-18ZM22.676 12.553a11.249 11.249 0 0 1-2.631 4.31l-3.099-3.099a5.25 5.25 0 0 0-6.71-6.71L7.759 4.577a11.217 11.217 0 0 1 4.242-.827c4.97 0 9.185 3.223 10.675 7.69.12.362.12.752 0 1.113Z" />
+          <path
+            d="M15.75 12c0 .18-.013.357-.037.53l-4.244-4.243A3.75 3.75 0 0 1 15.75 12ZM12.53 15.713l-4.243-4.244a3.75 3.75 0 0 0 4.244 4.243Z" />
+          <path
+            d="M6.75 12c0-.619.107-1.213.304-1.764l-3.1-3.1a11.25 11.25 0 0 0-2.63 4.31c-.12.362-.12.752 0 1.114 1.489 4.467 5.704 7.69 10.675 7.69 1.5 0 2.933-.294 4.242-.827l-2.477-2.477A5.25 5.25 0 0 1 6.75 12Z" />
+        </svg>
+
+        Hidden
+      </div>
+      {% endif %}
+      <div class="mt-2 flex items-center text-sm text-gray-500 dark:text-gray-400">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+          class="mr-1.5 size-5 shrink-0 text-gray-400 dark:text-gray-500">
+          <path
+            d="M4.5 6.375a4.125 4.125 0 1 1 8.25 0 4.125 4.125 0 0 1-8.25 0ZM14.25 8.625a3.375 3.375 0 1 1 6.75 0 3.375 3.375 0 0 1-6.75 0ZM1.5 19.125a7.125 7.125 0 0 1 14.25 0v.003l-.001.119a.75.75 0 0 1-.363.63 13.067 13.067 0 0 1-6.761 1.873c-2.472 0-4.786-.684-6.76-1.873a.75.75 0 0 1-.364-.63l-.001-.122ZM17.25 19.128l-.001.144a2.25 2.25 0 0 1-.233.96 10.088 10.088 0 0 0 5.06-1.01.75.75 0 0 0 .42-.643 4.875 4.875 0 0 0-6.957-4.611 8.586 8.586 0 0 1 1.71 5.157v.003Z" />
+        </svg>
+
+        3 Responses
+      </div>
+      <div class="mt-2 flex items-center text-sm text-gray-500 dark:text-gray-400">
+        <svg viewBox="0 0 20 20" fill="currentColor" data-slot="icon" aria-hidden="true"
+          class="mr-1.5 size-5 shrink-0 text-gray-400 dark:text-gray-500">
+          <path
+            d="M5.75 2a.75.75 0 0 1 .75.75V4h7V2.75a.75.75 0 0 1 1.5 0V4h.25A2.75 2.75 0 0 1 18 6.75v8.5A2.75 2.75 0 0 1 15.25 18H4.75A2.75 2.75 0 0 1 2 15.25v-8.5A2.75 2.75 0 0 1 4.75 4H5V2.75A.75.75 0 0 1 5.75 2Zm-1 5.5c-.69 0-1.25.56-1.25 1.25v6.5c0 .69.56 1.25 1.25 1.25h10.5c.69 0 1.25-.56 1.25-1.25v-6.5c0-.69-.56-1.25-1.25-1.25H4.75Z"
+            clip-rule="evenodd" fill-rule="evenodd" />
+        </svg>
+        Expires on {{object.expiration_date|date}}
+      </div>
+    </div>
+  </div>
+  <div class="mt-5 flex lg:mt-0 lg:ml-4">
+    <span class="hidden sm:block">
+      <button type="button"
+        class="cursor-pointer inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-xs inset-ring inset-ring-gray-300 hover:bg-gray-50 dark:bg-white/10 dark:text-white dark:shadow-none dark:inset-ring-white/5 dark:hover:bg-white/20">
+        <svg viewBox="0 0 20 20" fill="currentColor" data-slot="icon" aria-hidden="true"
+          class="mr-1.5 -ml-0.5 size-5 text-gray-400 dark:text-white">
+          <path
+            d="m2.695 14.762-1.262 3.155a.5.5 0 0 0 .65.65l3.155-1.262a4 4 0 0 0 1.343-.886L17.5 5.501a2.121 2.121 0 0 0-3-3L3.58 13.419a4 4 0 0 0-.885 1.343Z" />
+        </svg>
+        Edit
+      </button>
+    </span>
+
+    <span class="ml-3 hidden sm:block">
+      <button type="button"
+        class="cursor-pointer inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-xs inset-ring inset-ring-gray-300 hover:bg-gray-50 dark:bg-white/10 dark:text-white dark:shadow-none dark:inset-ring-white/5 dark:hover:bg-white/20">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+          class="mr-1.5 -ml-0.5 size-5 text-gray-400 dark:text-white">
+          <path stroke-linecap="round" stroke-linejoin="round"
+            d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+        </svg>
+
+        View
+      </button>
+    </span>
+
+    <span class="ml-3 hidden sm:block">
+      <button type="button"
+        class="cursor-pointer inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-xs inset-ring inset-ring-gray-300 hover:bg-gray-50 dark:bg-white/10 dark:text-white dark:shadow-none dark:inset-ring-white/5 dark:hover:bg-white/20">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+          class="mr-1.5 -ml-0.5 size-5 text-gray-400 dark:text-white">
+          <path stroke-linecap="round" stroke-linejoin="round"
+            d="M7.217 10.907a2.25 2.25 0 1 0 0 2.186m0-2.186c.18.324.283.696.283 1.093s-.103.77-.283 1.093m0-2.186 9.566-5.314m-9.566 7.5 9.566 5.314m0 0a2.25 2.25 0 1 0 3.935 2.186 2.25 2.25 0 0 0-3.935-2.186Zm0-12.814a2.25 2.25 0 1 0 3.933-2.185 2.25 2.25 0 0 0-3.933 2.185Z" />
+        </svg>
+
+        Share
+      </button>
+    </span>
+
+    <span class="sm:ml-3">
+      <button type="button"
+        class="cursor-pointer inline-flex items-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 dark:bg-indigo-500 dark:shadow-none dark:hover:bg-indigo-400 dark:focus-visible:outline-indigo-500">
+        <svg viewBox="0 0 20 20" fill="currentColor" data-slot="icon" aria-hidden="true" class="mr-1.5 -ml-0.5 size-5">
+          <path
+            d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z"
+            clip-rule="evenodd" fill-rule="evenodd" />
+        </svg>
+        Publish
+      </button>
+    </span>
+
+    <!-- Dropdown -->
+    <el-dropdown class="relative ml-3 sm:hidden">
+      <button
+        class="inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-xs inset-ring inset-ring-gray-300 hover:bg-gray-50 dark:bg-white/10 dark:text-white dark:shadow-none dark:inset-ring-white/5 dark:hover:bg-white/20">
+        More
+        <svg viewBox="0 0 20 20" fill="currentColor" data-slot="icon" aria-hidden="true"
+          class="-mr-1 ml-1.5 size-5 text-gray-400 dark:text-white">
+          <path
+            d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z"
+            clip-rule="evenodd" fill-rule="evenodd" />
+        </svg>
+      </button>
+
+      <el-menu anchor="bottom start" popover
+        class="-mr-1 w-24 origin-top-right rounded-md bg-white py-1 shadow-lg outline-1 outline-black/5 transition transition-discrete [--anchor-gap:--spacing(2)] data-closed:scale-95 data-closed:transform data-closed:opacity-0 data-enter:duration-200 data-enter:ease-out data-leave:duration-75 data-leave:ease-in dark:bg-gray-800 dark:shadow-none dark:-outline-offset-1 dark:outline-white/10">
+        <a href="#"
+          class="block px-4 py-2 text-sm text-gray-700 focus:bg-gray-100 focus:outline-hidden dark:text-gray-300 dark:focus:bg-white/5">Edit</a>
+        <a href="#"
+          class="block px-4 py-2 text-sm text-gray-700 focus:bg-gray-100 focus:outline-hidden dark:text-gray-300 dark:focus:bg-white/5">View</a>
+        <a href="#"
+          class="block px-4 py-2 text-sm text-gray-700 focus:bg-gray-100 focus:outline-hidden dark:text-gray-300 dark:focus:bg-white/5">Share</a>
+      </el-menu>
+    </el-dropdown>
+  </div>
+</div>
+
+<div>
+  <div class="border-b border-gray-200 pb-5 sm:flex sm:items-center dark:border-white/10">
+    <div class="sm:flex-auto">
+      <h1 class="text-base font-semibold text-gray-900 dark:text-white">Responses</h1>
+      <p class="mt-2 text-sm text-gray-700 dark:text-gray-300">A list of all responses</p>
+    </div>
+  </div>
+  <div class="mt-8 flow-root">
+    <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+      <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
+        <div
+          class="overflow-hidden shadow-sm outline-1 outline-black/5 sm:rounded-lg dark:shadow-none dark:-outline-offset-1 dark:outline-white/10">
+          <table class="relative min-w-full divide-y divide-gray-300 dark:divide-white/15">
+            <thead class="bg-gray-50 dark:bg-gray-800/75">
+              <tr>
+                <th scope="col"
+                  class="py-3.5 pr-3 pl-4 text-left text-sm font-semibold text-gray-900 sm:pl-6 dark:text-gray-200">
+                  Name</th>
+                <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 dark:text-gray-200">
+                  Title</th>
+                <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 dark:text-gray-200">
+                  Email</th>
+                <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 dark:text-gray-200">
+                  Role</th>
+                <th scope="col" class="py-3.5 pr-4 pl-3 sm:pr-6">
+                  <span class="sr-only">Edit</span>
+                </th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-200 bg-white dark:divide-white/10 dark:bg-gray-800/50">
+              <tr>
+                <td class="py-4 pr-3 pl-4 text-sm font-medium whitespace-nowrap text-gray-900 sm:pl-6 dark:text-white">
+                  Lindsay Walton</td>
+                <td class="px-3 py-4 text-sm whitespace-nowrap text-gray-500 dark:text-gray-400">Front-end Developer
+                </td>
+                <td class="px-3 py-4 text-sm whitespace-nowrap text-gray-500 dark:text-gray-400">
+                  lindsay.walton@example.com</td>
+                <td class="px-3 py-4 text-sm whitespace-nowrap text-gray-500 dark:text-gray-400">Member</td>
+                <td class="py-4 pr-4 pl-3 text-right text-sm font-medium whitespace-nowrap sm:pr-6">
+                  <a href="#"
+                    class="text-indigo-600 hover:text-indigo-900 dark:text-indigo-400 dark:hover:text-indigo-300">Edit<span
+                      class="sr-only">, Lindsay Walton</span></a>
+                </td>
+              </tr>
+              <tr>
+                <td class="py-4 pr-3 pl-4 text-sm font-medium whitespace-nowrap text-gray-900 sm:pl-6 dark:text-white">
+                  Courtney Henry</td>
+                <td class="px-3 py-4 text-sm whitespace-nowrap text-gray-500 dark:text-gray-400">Designer</td>
+                <td class="px-3 py-4 text-sm whitespace-nowrap text-gray-500 dark:text-gray-400">
+                  courtney.henry@example.com</td>
+                <td class="px-3 py-4 text-sm whitespace-nowrap text-gray-500 dark:text-gray-400">Admin</td>
+                <td class="py-4 pr-4 pl-3 text-right text-sm font-medium whitespace-nowrap sm:pr-6">
+                  <a href="#"
+                    class="text-indigo-600 hover:text-indigo-900 dark:text-indigo-400 dark:hover:text-indigo-300">Edit<span
+                      class="sr-only">, Courtney Henry</span></a>
+                </td>
+              </tr>
+              <tr>
+                <td class="py-4 pr-3 pl-4 text-sm font-medium whitespace-nowrap text-gray-900 sm:pl-6 dark:text-white">
+                  Tom Cook</td>
+                <td class="px-3 py-4 text-sm whitespace-nowrap text-gray-500 dark:text-gray-400">Director of Product
+                </td>
+                <td class="px-3 py-4 text-sm whitespace-nowrap text-gray-500 dark:text-gray-400">tom.cook@example.com
+                </td>
+                <td class="px-3 py-4 text-sm whitespace-nowrap text-gray-500 dark:text-gray-400">Member</td>
+                <td class="py-4 pr-4 pl-3 text-right text-sm font-medium whitespace-nowrap sm:pr-6">
+                  <a href="#"
+                    class="text-indigo-600 hover:text-indigo-900 dark:text-indigo-400 dark:hover:text-indigo-300">Edit<span
+                      class="sr-only">, Tom Cook</span></a>
+                </td>
+              </tr>
+              <tr>
+                <td class="py-4 pr-3 pl-4 text-sm font-medium whitespace-nowrap text-gray-900 sm:pl-6 dark:text-white">
+                  Whitney Francis</td>
+                <td class="px-3 py-4 text-sm whitespace-nowrap text-gray-500 dark:text-gray-400">Copywriter</td>
+                <td class="px-3 py-4 text-sm whitespace-nowrap text-gray-500 dark:text-gray-400">
+                  whitney.francis@example.com</td>
+                <td class="px-3 py-4 text-sm whitespace-nowrap text-gray-500 dark:text-gray-400">Admin</td>
+                <td class="py-4 pr-4 pl-3 text-right text-sm font-medium whitespace-nowrap sm:pr-6">
+                  <a href="#"
+                    class="text-indigo-600 hover:text-indigo-900 dark:text-indigo-400 dark:hover:text-indigo-300">Edit<span
+                      class="sr-only">, Whitney Francis</span></a>
+                </td>
+              </tr>
+              <tr>
+                <td class="py-4 pr-3 pl-4 text-sm font-medium whitespace-nowrap text-gray-900 sm:pl-6 dark:text-white">
+                  Leonard Krasner</td>
+                <td class="px-3 py-4 text-sm whitespace-nowrap text-gray-500 dark:text-gray-400">Senior Designer</td>
+                <td class="px-3 py-4 text-sm whitespace-nowrap text-gray-500 dark:text-gray-400">
+                  leonard.krasner@example.com</td>
+                <td class="px-3 py-4 text-sm whitespace-nowrap text-gray-500 dark:text-gray-400">Owner</td>
+                <td class="py-4 pr-4 pl-3 text-right text-sm font-medium whitespace-nowrap sm:pr-6">
+                  <a href="#"
+                    class="text-indigo-600 hover:text-indigo-900 dark:text-indigo-400 dark:hover:text-indigo-300">Edit<span
+                      class="sr-only">, Leonard Krasner</span></a>
+                </td>
+              </tr>
+              <tr>
+                <td class="py-4 pr-3 pl-4 text-sm font-medium whitespace-nowrap text-gray-900 sm:pl-6 dark:text-white">
+                  Floyd Miles</td>
+                <td class="px-3 py-4 text-sm whitespace-nowrap text-gray-500 dark:text-gray-400">Principal Designer
+                </td>
+                <td class="px-3 py-4 text-sm whitespace-nowrap text-gray-500 dark:text-gray-400">
+                  floyd.miles@example.com</td>
+                <td class="px-3 py-4 text-sm whitespace-nowrap text-gray-500 dark:text-gray-400">Member</td>
+                <td class="py-4 pr-4 pl-3 text-right text-sm font-medium whitespace-nowrap sm:pr-6">
+                  <a href="#"
+                    class="text-indigo-600 hover:text-indigo-900 dark:text-indigo-400 dark:hover:text-indigo-300">Edit<span
+                      class="sr-only">, Floyd Miles</span></a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
   </div>
+</div>
 
-  <div>
-    <div class="border-b border-gray-200 pb-5 sm:flex sm:items-center sm:justify-between dark:border-white/10">
-      <h3 class="text-base font-semibold text-gray-900 dark:text-white">Format</h3>
-      <div class="mt-3 flex sm:mt-0 sm:ml-4">
-        <button type="button"
-          class="inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-xs inset-ring inset-ring-gray-300 hover:bg-gray-50 dark:bg-white/10 dark:text-white dark:shadow-none dark:inset-ring-white/5 dark:hover:bg-white/20">Share</button>
-        <a href="{{object.get_edit_url}}"
-          class="ml-3 inline-flex items-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 dark:bg-indigo-500 dark:shadow-none dark:hover:bg-indigo-400 dark:focus-visible:outline-indigo-500">Edit</a>
-      </div>
+<div>
+  <div class="border-b border-gray-200 pb-5 sm:flex sm:items-center sm:justify-between dark:border-white/10">
+    <h3 class="text-base font-semibold text-gray-900 dark:text-white">Format</h3>
+    <div class="mt-3 flex sm:mt-0 sm:ml-4">
+      <button type="button"
+        class="inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-xs inset-ring inset-ring-gray-300 hover:bg-gray-50 dark:bg-white/10 dark:text-white dark:shadow-none dark:inset-ring-white/5 dark:hover:bg-white/20">Share</button>
+      <a href="{{object.get_edit_url}}"
+        class="ml-3 inline-flex items-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 dark:bg-indigo-500 dark:shadow-none dark:hover:bg-indigo-400 dark:focus-visible:outline-indigo-500">Edit</a>
     </div>
-    <div class="grid grid-cols-12 md:gap-8 py-8">
-      {% for field_url in object.get_field_urls %}
-      <div hx-get="{{field_url}}" hx-swap="outerHTML" hx-trigger="load"></div>
-      {% endfor %}
-    </div>
+  </div>
+  <div class="grid grid-cols-12 md:gap-8 py-8">
+    {% for field_url in object.get_field_urls %}
+    <div hx-get="{{field_url}}" hx-swap="outerHTML" hx-trigger="load"></div>
+    {% endfor %}
   </div>
 </div>
 {% endblock main %}
