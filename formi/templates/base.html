@@ -105,7 +105,10 @@
         </dialog>
       </el-dialog>
     </header>
-    <main class="px-4">{% block main %}{% endblock main %}</main>
+    <main class="mx-8 sm:mx-auto max-w-7xl pt-10 pb-24 sm:pb-32 lg:px-8 flex flex-col gap-y-16">
+      {% block main %}
+      {% endblock main%}
+    </main>
     <footer>
       <div class="mx-auto max-w-7xl px-6 py-12 md:flex md:items-center md:justify-between lg:px-8">
         <div class="flex justify-center gap-x-6 md:order-2">
@@ -150,7 +153,7 @@
           </a>
         </div>
         <p class="mt-8 text-center text-sm/6 text-gray-600 md:order-1 md:mt-0 dark:text-gray-400">
-          &copy; {% now "Y" %} Formi Logo, Inc. All rights reserved.
+          &copy; {% now "Y" %} Formi Inc. All rights reserved.
         </p>
       </div>
     </footer>
