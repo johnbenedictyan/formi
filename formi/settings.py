@@ -14,10 +14,6 @@ import os
 from pathlib import Path
 from urllib.parse import parse_qsl, urlparse
 
-from dotenv import load_dotenv
-
-load_dotenv()
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -29,7 +25,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-=axaektlrl2n#1b2!+js!1!$*#zqy8=a&552n8q)6x$0nr_=1a"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
+
+if DEBUG:
+    from dotenv import load_dotenv
+
+    load_dotenv()
 
 ALLOWED_HOSTS = ["formi.fly.dev", "127.0.0.1"]
 
